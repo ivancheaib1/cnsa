@@ -8,11 +8,24 @@ interface Props {
 
 const { lang = 'es' } = Astro.props;
 
+const products = [
+  { label: 'Tintas e Vernizes', href: '/products/tintas-vernizes' },
+  { label: 'Termoplásticos', href: '/products/termoplasticos' },
+  { label: 'Plástico a Frio', href: '/products/plastico-frio' },
+  { label: 'Piso Podotácil', href: '/products/piso-podotactil' },
+  { label: 'Microesferas de Vidrio', href: '/products/microesferas-vidrio' },
+  { label: 'Tachas e Tachões', href: '/products/tachas-tachoes' },
+  { label: 'Colas e Adesivos', href: '/products/colas-adesivos' },
+  { label: 'Pisos Industriales', href: '/products/pisos-industriales' },
+  { label: 'Pisos Decorativos', href: '/products/pisos-decorativos' },
+  { label: 'Préformados', href: '/products/preformados' },
+];
+
 const nav = {
   es: [
     { label: 'Inicio', href: '/' },
     { label: 'Nosotros', href: '/about' },
-    { label: 'Productos', href: '/products' },
+    { label: 'Productos', href: '/products', dropdown: products },
     { label: 'Proyectos', href: '/projects' },
     { label: 'Blog', href: '/blog' },
     { label: 'Contacto', href: '/contact' },
@@ -54,9 +67,24 @@ const currentNav = getNavigation();
     <!-- Desktop Navigation -->
     <nav class="hidden lg:flex items-center gap-8">
       {currentNav.map(item => (
-        <a href={item.href} class="text-gray hover:text-white transition-colors duration-300 text-sm font-medium uppercase tracking-wide">
-          {item.label}
-        </a>
+        <div key={item.label} class="relative group">
+          <a href={item.href} class="text-gray hover:text-white transition-colors duration-300 text-sm font-medium uppercase tracking-wide flex items-center gap-1">
+            {item.label}
+            {(item as any).dropdown && <Icon name="chevron-down" size={14} class="group-hover:rotate-180 transition-transform duration-300" />}
+          </a>
+          {(item as any).dropdown && (
+            <div class="absolute left-0 mt-0 w-48 bg-dark-secondary border border-[rgba(255,255,255,0.08)] rounded-sm shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2">
+              {(item as any).dropdown.map((product: any) => (
+                <a
+                  href={product.href}
+                  class="block px-4 py-3 text-xs text-gray hover:text-white hover:bg-dark-tertiary transition-colors duration-200 border-b border-[rgba(255,255,255,0.04)] last:border-b-0"
+                >
+                  {product.label}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
       ))}
     </nav>
 

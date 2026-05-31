@@ -17,23 +17,63 @@ const stats = [
 const products = [
   {
     icon: 'paint',
-    title: 'Pinturas de Marcaje Vial',
+    title: 'Tintas e Vernizes',
     description: 'Pinturas de alta reflectividad y durabilidad superior',
+    slug: 'tintas-vernizes',
   },
   {
     icon: 'truck',
-    title: 'Materiales Termoplásticos',
+    title: 'Termoplásticos',
     description: 'Soluciones termoplásticas con adherencia excepcional',
+    slug: 'termoplasticos',
   },
   {
     icon: 'zap',
-    title: 'Perlas de Vidrio',
-    description: 'Perlas reflectoras para máxima visibilidad nocturna',
+    title: 'Plástico a Frio',
+    description: 'Aplicación rápida sin requerir calor',
+    slug: 'plastico-frio',
   },
   {
     icon: 'shield',
-    title: 'Soluciones de Seguridad',
-    description: 'Sistemas integrales de protección vial',
+    title: 'Piso Podotátil',
+    description: 'Pisos tácti para orientación de personas con discapacidad visual',
+    slug: 'piso-podotactil',
+  },
+  {
+    icon: 'zap',
+    title: 'Microesferas de Vidro',
+    description: 'Perlas reflectoras de alta calidad para máxima visibilidad',
+    slug: 'microesferas-vidrio',
+  },
+  {
+    icon: 'target',
+    title: 'Tachas e Tachões',
+    description: 'Elementos de fijación y demarcación vial',
+    slug: 'tachas-tachoes',
+  },
+  {
+    icon: 'briefcase',
+    title: 'Colas e Adesivos',
+    description: 'Adhesivos especializados para aplicaciones viales',
+    slug: 'colas-adesivos',
+  },
+  {
+    icon: 'factory',
+    title: 'Pisos Industriais',
+    description: 'Soluciones de piso para entornos industriales y comerciales',
+    slug: 'pisos-industriales',
+  },
+  {
+    icon: 'award',
+    title: 'Pisos Decorativos',
+    description: 'Pisos decorativos y de seguridad personalizados',
+    slug: 'pisos-decorativos',
+  },
+  {
+    icon: 'grid',
+    title: 'Préformados',
+    description: 'Elementos prefabricados para aplicación rápida y precisa',
+    slug: 'preformados',
   },
 ];
 
@@ -107,15 +147,15 @@ const projects = [
   </section>
 
   <!-- Stats Section -->
-  <section class="bg-dark-secondary py-12 md:py-16 border-y border-[rgba(255,255,255,0.08)]">
+  <section class="bg-dark-secondary py-12 md:py-20 border-y border-[rgba(255,255,255,0.08)]">
     <div class="container-premium">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-        {stats.map(stat => (
-          <div class="text-center" data-stat={stat.number}>
-            <h3 class="text-4xl md:text-5xl font-body font-bold text-primary mb-2">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-0">
+        {stats.map((stat, idx) => (
+          <div class="text-center py-8 px-4" data-stat={stat.number} style={idx < stats.length - 1 ? 'border-right: 1px solid rgba(255,255,255,0.15)' : ''}>
+            <h3 class="text-5xl md:text-6xl font-body font-bold text-primary mb-3">
               {stat.number}
             </h3>
-            <p class="text-gray text-sm">{stat.label}</p>
+            <p class="text-gray-light text-sm font-medium">{stat.label}</p>
           </div>
         ))}
       </div>
@@ -124,12 +164,16 @@ const projects = [
 
   <!-- Products Section -->
   <Section id="products" title="Nuestros Productos" subtitle="Soluciones completas para cada necesidad">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
       {products.map(product => (
-        <Card>
+        <Card class="flex flex-col">
           <Icon name={product.icon as any} size={32} class="text-primary mb-4" />
-          <h3 class="text-lg font-body font-bold text-white mb-2">{product.title}</h3>
-          <p class="text-gray text-sm">{product.description}</p>
+          <h3 class="text-base font-body font-bold text-white mb-2 flex-1">{product.title}</h3>
+          <p class="text-gray text-xs mb-4 flex-1">{product.description}</p>
+          <Button href={`/products/${product.slug}`} variant="ghost" size="sm" class="self-start">
+            <Icon name="arrow-right" size={14} />
+            Ver
+          </Button>
         </Card>
       ))}
     </div>
@@ -231,6 +275,53 @@ const projects = [
       </Button>
     </div>
   </Section>
+
+  <!-- Quick Contact Section -->
+  <section class="bg-gradient-to-r from-dark via-dark-secondary to-dark py-16 md:py-20">
+    <div class="container-premium">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Call Us -->
+        <div class="flex items-start gap-4 lg:pr-8 lg:border-r border-white/20">
+          <Icon name="phone" size={32} class="text-primary flex-shrink-0 mt-1" />
+          <div>
+            <h4 class="font-body font-bold text-white mb-3">Llamar Ahora</h4>
+            <p class="text-white text-sm font-bold">(646) 555-0258</p>
+            <p class="text-gray-light text-xs">(503) 555-0666</p>
+          </div>
+        </div>
+
+        <!-- Office Time -->
+        <div class="flex items-start gap-4 lg:px-8 lg:border-r border-white/20">
+          <Icon name="clock" size={32} class="text-primary flex-shrink-0 mt-1" />
+          <div>
+            <h4 class="font-body font-bold text-white mb-3">Horario Oficina</h4>
+            <p class="text-white text-sm font-bold">Lun-Vie: 9:00 - 17:00</p>
+            <p class="text-gray-light text-xs">America/New_York</p>
+          </div>
+        </div>
+
+        <!-- Support -->
+        <div class="flex items-start gap-4 lg:px-8 lg:border-r border-white/20">
+          <Icon name="email" size={32} class="text-primary flex-shrink-0 mt-1" />
+          <div>
+            <h4 class="font-body font-bold text-white mb-3">Soporte</h4>
+            <p class="text-white text-sm font-bold">support@cnsa.com</p>
+            <p class="text-gray-light text-xs">help@cnsa.com</p>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="flex items-start gap-4 lg:pl-8">
+          <Icon name="location" size={32} class="text-primary flex-shrink-0 mt-1" />
+          <div>
+            <h4 class="font-body font-bold text-white mb-3">Dirección</h4>
+            <p class="text-white text-sm font-bold">Asunción, Paraguay</p>
+            <p class="text-gray-light text-xs">Piso 2, Sede Central</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <script>

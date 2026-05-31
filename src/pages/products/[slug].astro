@@ -1,0 +1,323 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/ui/Section.astro';
+import Card from '@/components/ui/Card.astro';
+import Button from '@/components/ui/Button.astro';
+import Icon from '@/components/ui/Icon.astro';
+
+const { slug } = Astro.params;
+
+const productData: Record<string, any> = {
+  'tintas-vernizes': {
+    title: 'Tintas e Vernizes',
+    icon: 'paint',
+    subtitle: 'Pinturas de marcaje vial de alta reflectividad',
+    description: 'Nuestras tintas y vernices ofrecen la máxima reflectividad y durabilidad para marcaje vial en cualquier condición climática.',
+    features: [
+      'Alta reflectividad nocturna',
+      'Resistencia a rayos UV',
+      'Durabilidad excepcional',
+      'Fácil aplicación',
+      'Eco-amigable',
+    ],
+    specs: {
+      'Reflectividad': 'R3 (mínimo)',
+      'Durabilidad': '24-36 meses',
+      'Rendimiento': '8-10 m²/litro',
+      'Secado': '30-60 minutos',
+    },
+  },
+  'termoplasticos': {
+    title: 'Termoplásticos',
+    icon: 'truck',
+    subtitle: 'Materiales termoplásticos con adherencia excepcional',
+    description: 'Soluciones termoplásticas de última generación que combinan excelente adherencia con visibilidad nocturna superior.',
+    features: [
+      'Adherencia superior',
+      'Máxima durabilidad',
+      'Instalación rápida',
+      'Reflectividad mejorada',
+      'Resistencia al tráfico pesado',
+    ],
+    specs: {
+      'Espesor': '2-4mm',
+      'Temperatura aplicación': '160-200°C',
+      'Durabilidad': '36-48 meses',
+      'Reflectividad': 'RA1-RA2',
+    },
+  },
+  'plastico-frio': {
+    title: 'Plástico a Frio',
+    icon: 'zap',
+    subtitle: 'Aplicación de plástico sin requerir calor',
+    description: 'Innovadora solución de aplicación en frío que elimina la necesidad de equipos de calentamiento, reduciendo costos y complejidad.',
+    features: [
+      'Aplicación sin calor',
+      'Costos reducidos',
+      'Instalación rápida',
+      'Seguro para operarios',
+      'Versátil',
+    ],
+    specs: {
+      'Tiempo secado': '15-30 minutos',
+      'Temperatura aplicación': 'Ambiente',
+      'Durabilidad': '18-24 meses',
+      'Rendimiento': '4-6 m²/componente',
+    },
+  },
+  'piso-podotactil': {
+    title: 'Piso Podotácil',
+    icon: 'shield',
+    subtitle: 'Pisos tácti para orientación de personas',
+    description: 'Pisos podotácti especialmente diseñados para guiar y proteger a personas con discapacidad visual en espacios públicos.',
+    features: [
+      'Superficie táctil mejorada',
+      'Durabilidad extrema',
+      'Antideslizante',
+      'Fácil limpieza',
+      'Cumple estándares ISO',
+    ],
+    specs: {
+      'Espesor': '3-5mm',
+      'Coeficiente fricción': '0.6 mínimo',
+      'Durabilidad': '48+ meses',
+      'Instalación': 'Adhesiva o mecánica',
+    },
+  },
+  'microesferas-vidrio': {
+    title: 'Microesferas de Vidrio',
+    icon: 'zap',
+    subtitle: 'Perlas reflectoras de alta calidad',
+    description: 'Microesferas de vidrio de grado óptico que proporcionan máxima reflectividad para sistemas de marcaje vial.',
+    features: [
+      'Reflectividad superior',
+      'Grado óptico',
+      'Tamaño uniforme',
+      'Compatibilidad universal',
+      'Durabilidad garantizada',
+    ],
+    specs: {
+      'Tamaño partícula': '90-150 micras',
+      'Densidad': '2.5 g/cm³',
+      'Pureza': '99.9%',
+      'Índice refracción': 'n=1.50',
+    },
+  },
+  'tachas-tachoes': {
+    title: 'Tachas e Tachões',
+    icon: 'target',
+    subtitle: 'Elementos de fijación para demarcación vial',
+    description: 'Tachas y tachones de acero inoxidable y plástico reforzado para demarcación segura en carreteras y estacionamientos.',
+    features: [
+      'Durabilidad extrema',
+      'Resistencia al impacto',
+      'Reflectividad integrada',
+      'Fácil instalación',
+      'Múltiples colores',
+    ],
+    specs: {
+      'Material': 'Acero inoxidable / Plástico',
+      'Altura': '20-30mm',
+      'Resistencia': 'Clase D400+',
+      'Reflectores': 'Ópticos integrados',
+    },
+  },
+  'colas-adesivos': {
+    title: 'Colas e Adesivos',
+    icon: 'briefcase',
+    subtitle: 'Adhesivos especializados para aplicaciones viales',
+    description: 'Colas y adhesivos de formulación especial diseñados para máxima adherencia en superficies viales de todo tipo.',
+    features: [
+      'Adherencia excepcional',
+      'Resistencia ambiental',
+      'Aplicación controlada',
+      'Tiempos de secado optimizados',
+      'Eco-responsables',
+    ],
+    specs: {
+      'Tipo': 'Poliuretano / Acrílico',
+      'Temperatura aplicación': '10-40°C',
+      'Tiempo curado': '24-72 horas',
+      'Resistencia cortante': '15+ N/mm²',
+    },
+  },
+  'pisos-industriales': {
+    title: 'Pisos Industriales',
+    icon: 'factory',
+    subtitle: 'Soluciones de piso para entornos industriales',
+    description: 'Sistemas de piso diseñados para ambientes industriales y comerciales con alta resistencia al desgarre y químicos.',
+    features: [
+      'Resistencia química',
+      'Anti-estático',
+      'Fácil mantenimiento',
+      'Durabilidad industrial',
+      'Acabados personalizables',
+    ],
+    specs: {
+      'Espesor': '4-8mm',
+      'Resistencia compresión': '50+ MPa',
+      'Compatibilidad': 'Ácidos, aceites, combustibles',
+      'Durabilidad': '60+ meses',
+    },
+  },
+  'pisos-decorativos': {
+    title: 'Pisos Decorativos',
+    icon: 'award',
+    subtitle: 'Pisos decorativos y de seguridad personalizados',
+    description: 'Pisos decorativos que combinan estética con funcionalidad de seguridad para espacios comerciales y públicos.',
+    features: [
+      'Diseños personalizables',
+      'Antideslizante',
+      'Fácil limpieza',
+      'Durabilidad estética',
+      'Amplitud cromática',
+    ],
+    specs: {
+      'Espesor': '3-5mm',
+      'Colores disponibles': '20+',
+      'Coef. fricción': '0.6-1.0',
+      'Durabilidad': '48+ meses',
+    },
+  },
+  'preformados': {
+    title: 'Préformados',
+    icon: 'grid',
+    subtitle: 'Elementos prefabricados de aplicación rápida',
+    description: 'Elementos viales prefabricados que permiten aplicación rápida y precisa, reduciendo tiempos de ejecución de proyectos.',
+    features: [
+      'Aplicación ultra-rápida',
+      'Precisión garantizada',
+      'Calidad consistente',
+      'Reducción de desperdicios',
+      'Versatilidad de diseños',
+    ],
+    specs: {
+      'Tipos': 'Líneas, flechas, símbolos',
+      'Tamaños': 'Personalizables',
+      'Aplicación': '5-10 min/elemento',
+      'Durabilidad': '36+ meses',
+    },
+  },
+};
+
+const product = productData[slug!];
+
+if (!product) {
+  return Astro.redirect('/products');
+}
+---
+
+<BaseLayout
+  lang="es"
+  title={`${product.title} | CNSA Paraguay`}
+  description={product.subtitle}
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-b from-dark-secondary to-dark pt-32 pb-16">
+    <div class="container-premium">
+      <div class="flex items-center gap-4 mb-6">
+        <Icon name={product.icon} size={48} class="text-primary" />
+        <div>
+          <h1 class="text-5xl md:text-6xl font-body font-bold text-white">
+            {product.title}
+          </h1>
+          <p class="text-lg text-gray mt-2">{product.subtitle}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Overview -->
+  <Section>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <img
+        src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80"
+        alt={product.title}
+        class="rounded-sm w-full"
+      />
+      <div>
+        <h2 class="text-4xl md:text-5xl font-body font-bold text-white mb-6">
+          {product.title}
+        </h2>
+        <p class="text-base text-gray mb-8 leading-relaxed">
+          {product.description}
+        </p>
+
+        <div class="mb-8">
+          <h3 class="text-xl font-body font-bold text-white mb-4">Características</h3>
+          <ul class="space-y-3">
+            {product.features.map((feature: string) => (
+              <li class="flex items-start gap-3">
+                <Icon name="check" size={20} class="text-primary mt-1 flex-shrink-0" />
+                <span class="text-gray">{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="flex gap-4">
+          <Button href="/contact" variant="primary" size="lg">
+            <Icon name="send" size={18} />
+            Solicitar Cotización
+          </Button>
+          <Button href="/products" variant="outline">
+            Volver a Productos
+          </Button>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Specifications -->
+  <Section title="Especificaciones Técnicas" class="bg-dark-secondary">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {Object.entries(product.specs).map(([key, value]) => (
+        <Card>
+          <h4 class="font-body font-bold text-white mb-2">{key}</h4>
+          <p class="text-primary font-bold text-lg">{value as string}</p>
+        </Card>
+      ))}
+    </div>
+  </Section>
+
+  <!-- Related Products -->
+  <Section title="Productos Relacionados">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <Card class="text-center">
+        <Icon name="paint" size={40} class="text-primary mx-auto mb-4" />
+        <h4 class="font-body font-bold text-white mb-2">Tintas e Vernizes</h4>
+        <Button href="/products/tintas-vernizes" variant="ghost" size="sm">Ver →</Button>
+      </Card>
+      <Card class="text-center">
+        <Icon name="truck" size={40} class="text-primary mx-auto mb-4" />
+        <h4 class="font-body font-bold text-white mb-2">Termoplásticos</h4>
+        <Button href="/products/termoplasticos" variant="ghost" size="sm">Ver →</Button>
+      </Card>
+      <Card class="text-center">
+        <Icon name="shield" size={40} class="text-primary mx-auto mb-4" />
+        <h4 class="font-body font-bold text-white mb-2">Piso Podotácil</h4>
+        <Button href="/products/piso-podotactil" variant="ghost" size="sm">Ver →</Button>
+      </Card>
+    </div>
+  </Section>
+
+  <!-- CTA Section -->
+  <Section class="bg-gradient-orange text-white text-center">
+    <h2 class="text-4xl md:text-5xl font-body font-bold mb-6">
+      ¿Interesado en {product.title}?
+    </h2>
+    <p class="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+      Nuestro equipo de especialistas está listo para ayudarte con cualquier pregunta o para proporcionar una cotización personalizada.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <Button href="/contact" variant="primary" size="lg">
+        <Icon name="send" size={18} />
+        Solicitar Información
+      </Button>
+      <Button href="tel:+59521123456" variant="secondary" size="lg">
+        <Icon name="phone" size={18} />
+        Llamar Ahora
+      </Button>
+    </div>
+  </Section>
+</BaseLayout>

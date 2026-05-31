@@ -4,7 +4,7 @@ interface Props {
          'menu' | 'close' | 'chevron-down' | 'star' | 'shield' | 'globe' |
          'factory' | 'truck' | 'users' | 'chart' | 'paint' | 'road' | 'gear' |
          'play' | 'video' | 'image' | 'download' | 'link' | 'search' | 'send' |
-         'briefcase' | 'zap' | 'eye' | 'target' | 'award';
+         'briefcase' | 'zap' | 'eye' | 'target' | 'award' | 'grid' | 'building';
   class?: string;
   size?: number;
   strokeWidth?: number;
@@ -44,6 +44,8 @@ const icons = {
   search: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="${strokeWidth}"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>`,
   send: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="${strokeWidth}"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9-7-9-7-9 7 9 7z" /></svg>`,
   briefcase: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="${strokeWidth}"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m3 0V4m3 0v2m0 0h.01M3 20h18a2 2 0 002-2v-8a2 2 0 00-2-2H3a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>`,
+  grid: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="${strokeWidth}"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zM14 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" /></svg>`,
+  building: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="${strokeWidth}"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" /></svg>`,
 };
 
 const svg = icons[name] || icons.check;
