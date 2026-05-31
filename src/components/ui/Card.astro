@@ -2,11 +2,14 @@
 interface Props {
   class?: string;
   children?: any;
+  hover?: boolean;
 }
 
-const { class: className = '' } = Astro.props;
+const { class: className = '', hover = true } = Astro.props;
 ---
 
-<div class={`bg-dark-secondary border border-white/10 rounded-md p-6 hover:border-primary/50 transition-all duration-300 ${className}`}>
+<div class={`bg-dark-secondary border border-[rgba(255,255,255,0.08)] rounded-sm p-6 transition-all duration-300 ${
+  hover ? 'hover:border-primary/40 hover:shadow-subtle' : ''
+} ${className}`}>
   <slot />
 </div>

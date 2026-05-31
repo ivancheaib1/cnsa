@@ -3,12 +3,12 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Section from '@/components/ui/Section.astro';
 import Card from '@/components/ui/Card.astro';
 import Button from '@/components/ui/Button.astro';
+import Icon from '@/components/ui/Icon.astro';
 
 const lang = 'es';
 
 const articles = [
   {
-    id: 1,
     title: 'La Importancia del Marcaje Vial en la Seguridad',
     excerpt: 'Descubre cómo el marcaje vial adecuado reduce accidentes y mejora la movilidad.',
     author: 'Dr. Carlos González',
@@ -18,7 +18,6 @@ const articles = [
     readTime: '5 min',
   },
   {
-    id: 2,
     title: 'Innovaciones en Materiales Termoplásticos',
     excerpt: 'Nuevas fórmulas termoplásticas con mejor adherencia y durabilidad.',
     author: 'Ing. María Rodríguez',
@@ -28,7 +27,6 @@ const articles = [
     readTime: '7 min',
   },
   {
-    id: 3,
     title: 'Sostenibilidad en la Industria Vial',
     excerpt: 'Cómo implementar soluciones ecológicas en proyectos de infraestructura.',
     author: 'Arq. Juan Pérez',
@@ -43,16 +41,16 @@ const articles = [
 <BaseLayout
   lang={lang}
   title="Blog | CNSA Paraguay"
-  description="Artículos y noticias sobre marcaje vial, seguridad en carreteras e innovaciones en infraestructura."
+  description="Artículos y noticias sobre marcaje vial, seguridad en carreteras e innovaciones."
 >
   <!-- Hero Section -->
   <section class="bg-gradient-to-b from-dark-secondary to-dark pt-32 pb-16">
     <div class="container-premium">
-      <h1 class="text-5xl md:text-6xl font-heading font-bold text-white mb-6">
+      <h1 class="text-5xl md:text-6xl font-body font-bold text-white mb-6">
         Blog
       </h1>
-      <p class="text-xl text-neutral-gray max-w-3xl">
-        Artículos, noticias e insights sobre marcaje vial, seguridad en carreteras e innovaciones en infraestructura.
+      <p class="text-lg text-gray max-w-3xl">
+        Artículos, noticias e insights sobre marcaje vial, seguridad en carreteras e innovaciones.
       </p>
     </div>
   </section>
@@ -61,37 +59,38 @@ const articles = [
   <Section title="Últimos Artículos">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {articles.map(article => (
-        <Card class="overflow-hidden hover:shadow-premium flex flex-col">
-          <div class="relative h-48 overflow-hidden rounded-md mb-6 -m-6 mb-6">
+        <Card class="overflow-hidden group flex flex-col">
+          <div class="relative h-48 overflow-hidden rounded-sm mb-6 -m-6 mb-6">
             <img
               src={article.image}
               alt={article.title}
-              class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             />
-            <div class="absolute top-4 left-4 bg-primary text-dark px-3 py-1 rounded-full text-xs font-bold">
+            <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-sm text-xs font-bold">
               {article.category}
             </div>
           </div>
 
           <div class="flex-1 flex flex-col">
-            <div class="flex items-center gap-2 text-neutral-gray text-sm mb-3">
+            <div class="flex items-center gap-2 text-gray text-xs mb-3">
               <span>{new Date(article.date).toLocaleDateString('es-ES')}</span>
               <span>•</span>
               <span>{article.readTime}</span>
             </div>
 
-            <h3 class="text-xl font-heading font-bold text-white mb-3 line-clamp-2">
+            <h3 class="text-lg font-body font-bold text-white mb-3 line-clamp-2">
               {article.title}
             </h3>
 
-            <p class="text-neutral-gray mb-4 flex-1">{article.excerpt}</p>
+            <p class="text-gray text-sm mb-4 flex-1">{article.excerpt}</p>
 
-            <div class="text-sm text-neutral-gray mb-6">
+            <div class="text-xs text-gray mb-6">
               Por <span class="text-primary font-bold">{article.author}</span>
             </div>
 
-            <Button href={`/blog/${article.id}`} variant="primary" size="sm">
-              Leer Artículo →
+            <Button href="#" variant="primary" size="sm">
+              Leer Artículo
+              <Icon name="arrow-right" size={14} />
             </Button>
           </div>
         </Card>
@@ -103,32 +102,33 @@ const articles = [
   <Section title="Categorías" class="bg-dark-secondary">
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
       {['Seguridad Vial', 'Tecnología', 'Sostenibilidad', 'Proyectos', 'Noticias'].map(category => (
-        <Card class="text-center hover:border-primary cursor-pointer">
-          <p class="text-white font-heading font-bold">{category}</p>
-          <p class="text-neutral-gray text-sm mt-2">3 artículos</p>
+        <Card class="text-center hover:border-primary/40 cursor-pointer">
+          <p class="text-white font-body font-bold text-sm">{category}</p>
+          <p class="text-gray text-xs mt-2">3 artículos</p>
         </Card>
       ))}
     </div>
   </Section>
 
   <!-- Newsletter CTA -->
-  <Section class="bg-gradient-to-r from-primary to-yellow-500 text-dark">
+  <Section class="bg-gradient-orange text-white">
     <div class="max-w-2xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+      <h2 class="text-3xl md:text-4xl font-body font-bold mb-4">
         Suscríbete a Nuestro Newsletter
       </h2>
       <p class="text-lg mb-8 opacity-90">
         Recibe artículos, noticias e insights directamente en tu email.
       </p>
 
-      <form class="flex gap-2 mb-6">
+      <form class="flex flex-col sm:flex-row gap-3 mb-6">
         <input
           type="email"
           placeholder="tu@email.com"
-          class="flex-1 px-4 py-3 rounded-md bg-white text-dark placeholder-dark/50 focus:outline-none"
+          class="flex-1 px-4 py-3 rounded-sm bg-white text-dark placeholder-dark/50 focus:outline-none font-body"
           required
         />
-        <Button type="submit" variant="secondary" size="md">
+        <Button type="submit" variant="primary" size="lg">
+          <Icon name="send" size={18} />
           Suscribirse
         </Button>
       </form>

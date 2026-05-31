@@ -1,10 +1,11 @@
 ---
 interface Props {
   href?: string;
-  variant?: 'primary' | 'secondary' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   class?: string;
   children?: any;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 const {
@@ -12,21 +13,23 @@ const {
   variant = 'primary',
   size = 'md',
   class: className = '',
+  type = 'button',
   children,
 } = Astro.props;
 
-const baseStyles = 'font-heading font-bold rounded-md transition-colors duration-300 inline-flex items-center justify-center';
+const baseStyles = 'font-body font-bold rounded-sm transition-all duration-300 inline-flex items-center justify-center gap-2 whitespace-nowrap';
 
 const variantStyles = {
-  primary: 'bg-primary text-dark hover:bg-yellow-500',
-  secondary: 'border-2 border-primary text-primary hover:bg-primary hover:text-dark',
-  ghost: 'text-primary hover:text-yellow-400',
+  primary: 'bg-primary text-white hover:bg-primary/90 active:scale-95',
+  secondary: 'border border-primary text-primary hover:bg-primary/10',
+  ghost: 'text-gray-light hover:text-white',
+  outline: 'border border-gray-light text-gray-light hover:border-white hover:text-white',
 };
 
 const sizeStyles = {
   sm: 'px-4 py-2 text-sm',
   md: 'px-6 py-3 text-base',
-  lg: 'px-8 py-4 text-lg',
+  lg: 'px-8 py-4 text-lg font-semibold',
 };
 
 const combinedClass = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
@@ -37,7 +40,7 @@ const combinedClass = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size
     <slot />
   </a>
 ) : (
-  <button class={combinedClass}>
+  <button type={type} class={combinedClass}>
     <slot />
   </button>
 )}

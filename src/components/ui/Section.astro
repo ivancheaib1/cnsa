@@ -13,8 +13,8 @@ const { title, subtitle, class: className = '' } = Astro.props;
   <div class="container-premium">
     {title && (
       <div class="mb-16">
-        <h2 class="text-4xl md:text-5xl font-heading font-bold text-white mb-4">{title}</h2>
-        {subtitle && <p class="text-lg text-neutral-gray max-w-2xl">{subtitle}</p>}
+        <h2 class="text-4xl md:text-5xl font-body font-bold text-white mb-4">{title}</h2>
+        {subtitle && <p class="text-base text-gray max-w-3xl">{subtitle}</p>}
       </div>
     )}
     <slot />

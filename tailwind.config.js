@@ -4,19 +4,21 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#F4B400',
+        primary: '#E05A1A',
         dark: {
-          DEFAULT: '#0F172A',
-          secondary: '#1E293B',
+          DEFAULT: '#080808',
+          secondary: '#111111',
+          tertiary: '#1A1A1A',
+        },
+        gray: {
+          DEFAULT: '#888888',
+          light: '#C8C8C8',
         },
         white: '#FFFFFF',
-        neutral: {
-          gray: '#94A3B8',
-        },
       },
       fontFamily: {
-        heading: ['Space Grotesk', 'sans-serif'],
-        body: ['Inter', 'sans-serif'],
+        body: ['Gantari', 'sans-serif'],
+        heading: ['Gantari', 'sans-serif'],
       },
       fontSize: {
         'xs': ['0.75rem', { lineHeight: '1rem' }],
@@ -27,21 +29,26 @@ export default {
         '2xl': ['1.5rem', { lineHeight: '2rem' }],
         '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
         '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
-        '5xl': ['3rem', { lineHeight: '1' }],
-        '6xl': ['3.75rem', { lineHeight: '1' }],
+        '5xl': ['3rem', { lineHeight: '1.1' }],
+        '6xl': ['3.75rem', { lineHeight: '1.1' }],
+        '7xl': ['4.5rem', { lineHeight: '1' }],
       },
       spacing: {
         'breathing': '6rem',
       },
       borderRadius: {
         'none': '0',
+        'xs': '0.125rem',
         'sm': '0.25rem',
         'base': '0.5rem',
-        'md': '0.75rem',
       },
       boxShadow: {
-        'premium': '0 20px 40px rgba(0, 0, 0, 0.1)',
-        'subtle': '0 4px 12px rgba(0, 0, 0, 0.05)',
+        'premium': '0 20px 60px rgba(0, 0, 0, 0.4)',
+        'subtle': '0 4px 12px rgba(0, 0, 0, 0.2)',
+        'inner-light': 'inset 0 1px 0 rgba(255, 255, 255, 0.05)',
+      },
+      backgroundImage: {
+        'gradient-orange': 'linear-gradient(135deg, #E05A1A 0%, #D64715 100%)',
       },
     },
   },
