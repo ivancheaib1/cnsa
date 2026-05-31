@@ -1,0 +1,144 @@
+---
+interface Props {
+  lang?: 'es' | 'en' | 'pt';
+}
+
+const { lang = 'es' } = Astro.props;
+
+const nav = {
+  es: [
+    { label: 'Inicio', href: '/' },
+    { label: 'Nosotros', href: '/about' },
+    { label: 'Productos', href: '/products' },
+    { label: 'Proyectos', href: '/projects' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Contacto', href: '/contact' },
+  ],
+  en: [
+    { label: 'Home', href: '/en/' },
+    { label: 'About', href: '/en/about' },
+    { label: 'Products', href: '/en/products' },
+    { label: 'Projects', href: '/en/projects' },
+    { label: 'Blog', href: '/en/blog' },
+    { label: 'Contact', href: '/en/contact' },
+  ],
+  pt: [
+    { label: 'Início', href: '/pt/' },
+    { label: 'Sobre', href: '/pt/about' },
+    { label: 'Produtos', href: '/pt/products' },
+    { label: 'Projetos', href: '/pt/projects' },
+    { label: 'Blog', href: '/pt/blog' },
+    { label: 'Contato', href: '/pt/contact' },
+  ],
+};
+
+const langLabels = {
+  es: 'Idioma',
+  en: 'Language',
+  pt: 'Idioma',
+};
+
+const getNavigation = () => nav[lang as keyof typeof nav] || nav.es;
+const currentNav = getNavigation();
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-dark/95 backdrop-blur-md border-b border-white/10">
+  <div class="container-premium py-4">
+    <div class="flex justify-between items-center">
+      <!-- Logo -->
+      <a href={lang === 'es' ? '/' : `/${lang}/`} class="flex items-center gap-2">
+        <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+          <span class="font-heading font-bold text-dark text-lg">CNSA</span>
+        </div>
+        <span class="font-heading font-bold text-white hidden sm:inline">CNSA Paraguay</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-8">
+        {currentNav.map(item => (
+          <a href={item.href} class="text-neutral-gray hover:text-primary transition-colors duration-300">
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Language Switcher & CTA -->
+      <div class="flex items-center gap-4">
+        <!-- Language Switcher -->
+        <div class="flex gap-2">
+          {['es', 'en', 'pt'].map(l => (
+            <a
+              href={l === 'es' ? '/' : `/${l}/`}
+              class={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${
+                lang === l
+                  ? 'bg-primary text-dark'
+                  : 'text-neutral-gray hover:text-primary'
+              }`}
+            >
+              {l.toUpperCase()}
+            </a>
+          ))}
+        </div>
+
+        <!-- CTA Button -->
+        <a
+          href={lang === 'es' ? '/contact' : `/${lang}/contact`}
+          class="hidden sm:inline-block px-6 py-2 bg-primary text-dark font-heading font-bold rounded-md hover:bg-yellow-500 transition-colors duration-300"
+        >
+          {lang === 'es' ? 'Cotizar' : lang === 'en' ? 'Quote' : 'Orçamento'}
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button
+          class="md:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-dark-secondary transition-colors duration-300"
+          aria-label="Toggle menu"
+          id="mobile-menu-btn"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav
+      id="mobile-nav"
+      class="hidden md:hidden mt-4 pb-4 flex flex-col gap-3 border-t border-white/10 pt-4"
+    >
+      {currentNav.map(item => (
+        <a href={item.href} class="text-neutral-gray hover:text-primary transition-colors duration-300 py-2">
+          {item.label}
+        </a>
+      ))}
+      <a
+        href={lang === 'es' ? '/contact' : `/${lang}/contact`}
+        class="mt-4 px-6 py-2 bg-primary text-dark font-heading font-bold rounded-md hover:bg-yellow-500 transition-colors duration-300 text-center"
+      >
+        {lang === 'es' ? 'Cotizar' : lang === 'en' ? 'Quote' : 'Orçamento'}
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const nav = document.getElementById('mobile-nav');
+
+  btn?.addEventListener('click', () => {
+    nav?.classList.toggle('hidden');
+  });
+
+  // Close menu when link is clicked
+  document.querySelectorAll('#mobile-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav?.classList.add('hidden');
+    });
+  });
+</script>
+
+<style>
+  header {
+    padding-top: 1rem;
+  }
+</style>

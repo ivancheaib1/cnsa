@@ -1,0 +1,92 @@
+---
+import '@/styles/global.css';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  lang?: 'es' | 'en' | 'pt';
+}
+
+const {
+  title = 'CNSA Paraguay - Soluciones de Marcaje Vial',
+  description = 'Empresa especializada en pinturas de marcaje vial, materiales termoplásticos y soluciones de seguridad vial',
+  image = 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1200&h=630&fit=crop',
+  lang = 'es',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CNSA Paraguay" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Language Alternates -->
+    <link rel="alternate" hreflang="es" href={new URL('/', Astro.site)} />
+    <link rel="alternate" hreflang="en" href={new URL('/en/', Astro.site)} />
+    <link rel="alternate" hreflang="pt" href={new URL('/pt/', Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)} />
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+
+  <body>
+    <Header lang={lang} />
+    <main>
+      <slot />
+    </main>
+    <Footer lang={lang} />
+
+    <script is:inline>
+      // Language detection and redirect
+      function detectLanguagePreference() {
+        const saved = localStorage.getItem('preferredLanguage');
+        if (saved) return saved;
+
+        const browserLang = navigator.language.split('-')[0];
+        const supported = ['es', 'en', 'pt'];
+        return supported.includes(browserLang) ? browserLang : 'es';
+      }
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const href = this.getAttribute('href');
+          if (href && href !== '#') {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

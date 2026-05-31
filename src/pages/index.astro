@@ -1,0 +1,204 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Card from '@/components/ui/Card.astro';
+import Section from '@/components/ui/Section.astro';
+import Button from '@/components/ui/Button.astro';
+
+const lang = 'es';
+
+const content = {
+  hero: {
+    title: 'La Seguridad Vial Comienza Con Precisión',
+    subtitle: 'Soluciones premium de marcaje vial y seguridad en carreteras para Paraguay y la región',
+  },
+  stats: [
+    { number: '20+', label: 'Años de Experiencia' },
+    { number: '500+', label: 'Proyectos Entregados' },
+    { number: '5000+', label: 'Kilómetros Marcados' },
+    { number: '200+', label: 'Clientes Satisfechos' },
+  ],
+  products: [
+    {
+      title: 'Pinturas de Marcaje Vial',
+      description: 'Pinturas de alta reflectividad y durabilidad para carreteras, estacionamientos y señalética urbana.',
+      icon: '🎨',
+    },
+    {
+      title: 'Materiales Termoplásticos',
+      description: 'Soluciones termoplásticas innovadoras con superior adherencia y visibilidad nocturna.',
+      icon: '⚙️',
+    },
+    {
+      title: 'Perlas de Vidrio',
+      description: 'Perlas reflectoras de alta calidad para máxima visibilidad y seguridad en cualquier condición.',
+      icon: '✨',
+    },
+    {
+      title: 'Soluciones de Seguridad',
+      description: 'Sistemas integrales de señalización y protección vial para infraestructura moderna.',
+      icon: '🛡️',
+    },
+  ],
+};
+---
+
+<BaseLayout lang={lang}>
+  <!-- Hero Section -->
+  <section class="relative h-screen bg-gradient-to-b from-dark-secondary to-dark flex items-center justify-center overflow-hidden pt-20">
+    <!-- Background Video Placeholder -->
+    <div class="absolute inset-0 opacity-40">
+      <div class="absolute inset-0 bg-gradient-to-r from-dark via-dark-secondary to-dark"></div>
+      <img
+        src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1920&q=80"
+        alt="Hero Background"
+        class="w-full h-full object-cover"
+      />
+    </div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 container-premium text-center">
+      <h1 class="text-5xl md:text-7xl font-heading font-bold text-white mb-6 leading-tight">
+        {content.hero.title}
+      </h1>
+      <p class="text-xl md:text-2xl text-neutral-gray mb-12 max-w-3xl mx-auto">
+        {content.hero.subtitle}
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+        <Button href="/contact" variant="primary" size="lg">
+          Solicitar Cotización
+        </Button>
+        <Button href="#products" variant="secondary" size="lg">
+          Explorar Soluciones
+        </Button>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="bg-dark-secondary py-16 md:py-20">
+    <Container class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      {content.stats.map(stat => (
+        <div class="text-center" data-stat={stat.number}>
+          <h3 class="text-4xl md:text-5xl font-heading font-bold text-primary mb-2">
+            {stat.number}
+          </h3>
+          <p class="text-neutral-gray">{stat.label}</p>
+        </div>
+      ))}
+    </Container>
+  </section>
+
+  <!-- Products Section -->
+  <Section
+    id="products"
+    title="Nuestros Productos"
+    subtitle="Soluciones completas de marcaje vial y seguridad en carreteras"
+  >
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {content.products.map(product => (
+        <Card class="text-center hover:shadow-premium">
+          <div class="text-5xl mb-4">{product.icon}</div>
+          <h3 class="text-xl font-heading font-bold text-white mb-3">
+            {product.title}
+          </h3>
+          <p class="text-neutral-gray text-sm mb-6">{product.description}</p>
+          <Button href="/products" variant="ghost" size="sm">
+            Más Información →
+          </Button>
+        </Card>
+      ))}
+    </div>
+  </Section>
+
+  <!-- Company Overview Section -->
+  <Section class="bg-dark-secondary">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div>
+        <img
+          src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80"
+          alt="Company Overview"
+          class="rounded-md"
+        />
+      </div>
+      <div>
+        <h2 class="text-4xl md:text-5xl font-heading font-bold text-white mb-6">
+          Excelencia Industrial Desde Paraguay
+        </h2>
+        <p class="text-lg text-neutral-gray mb-6">
+          Con más de 20 años de experiencia, CNSA Paraguay es líder en soluciones de marcaje vial y seguridad en carreteras. Nuestro compromiso con la calidad y la innovación nos ha posicionado como partners de confianza para gobiernos, municipalidades y empresas constructoras en toda la región.
+        </p>
+        <ul class="space-y-4 mb-8">
+          <li class="flex items-start gap-3">
+            <span class="text-primary text-2xl">✓</span>
+            <span class="text-neutral-gray">Certificaciones internacionales de calidad</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-primary text-2xl">✓</span>
+            <span class="text-neutral-gray">Procesos de producción avanzados</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-primary text-2xl">✓</span>
+            <span class="text-neutral-gray">Equipo de especialistas en ingeniería vial</span>
+          </li>
+        </ul>
+        <Button href="/about" variant="primary" size="lg">
+          Conocer Más
+        </Button>
+      </div>
+    </div>
+  </Section>
+
+  <!-- CTA Section -->
+  <Section class="bg-primary text-dark text-center">
+    <h2 class="text-4xl md:text-5xl font-heading font-bold mb-6">
+      ¿Listo para Tu Próximo Proyecto?
+    </h2>
+    <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+      Contáctanos hoy para solicitar una cotización personalizada y conocer cómo podemos ayudarte.
+    </p>
+    <Button href="/contact" variant="secondary" size="lg">
+      Solicitar Cotización
+    </Button>
+  </Section>
+</BaseLayout>
+
+<script>
+  // Animated counter effect
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const statElement = entry.target as HTMLElement;
+        const targetText = statElement.dataset.stat || '';
+        const targetNumber = parseInt(targetText.replace(/\D/g, ''), 10);
+
+        if (targetNumber && targetNumber > 0) {
+          let current = 0;
+          const increment = Math.ceil(targetNumber / 30);
+          const interval = setInterval(() => {
+            current += increment;
+            if (current >= targetNumber) {
+              statElement.textContent = targetText;
+              clearInterval(interval);
+            } else {
+              statElement.textContent = current.toString();
+            }
+          }, 30);
+        }
+        observer.unobserve(entry.target);
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-stat]').forEach(el => {
+    observer.observe(el);
+  });
+</script>

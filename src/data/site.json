@@ -1,0 +1,53 @@
+{
+  "name": "CNSA Paraguay",
+  "description": "Soluciones premium de marcaje vial y seguridad en carreteras",
+  "url": "https://cnsaparaguay.com",
+  "logo": "CNSA",
+  "contact": {
+    "email": "info@cnsaparaguay.com",
+    "phone": "+595 21 123 456",
+    "address": "Asunción, Paraguay",
+    "hours": {
+      "weekday": "8:00 - 18:00",
+      "saturday": "9:00 - 13:00"
+    }
+  },
+  "social": {
+    "facebook": "https://facebook.com/cnsaparaguay",
+    "instagram": "https://instagram.com/cnsaparaguay",
+    "linkedin": "https://linkedin.com/company/cnsaparaguay"
+  },
+  "branding": {
+    "colors": {
+      "primary": "#F4B400",
+      "dark": "#0F172A",
+      "dark_secondary": "#1E293B",
+      "white": "#FFFFFF",
+      "neutral_gray": "#94A3B8"
+    },
+    "fonts": {
+      "heading": "Space Grotesk",
+      "body": "Inter"
+    }
+  },
+  "languages": [
+    {
+      "code": "es",
+      "name": "Español",
+      "native": "Español",
+      "default": true
+    },
+    {
+      "code": "en",
+      "name": "English",
+      "native": "English",
+      "default": false
+    },
+    {
+      "code": "pt",
+      "name": "Português",
+      "native": "Português",
+      "default": false
+    }
+  ]
+}

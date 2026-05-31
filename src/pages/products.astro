@@ -1,0 +1,148 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/ui/Section.astro';
+import Card from '@/components/ui/Card.astro';
+import Button from '@/components/ui/Button.astro';
+
+const lang = 'es';
+
+const products = [
+  {
+    id: 1,
+    title: 'Pinturas de Marcaje Vial',
+    description: 'Pinturas de alta reflectividad y durabilidad para carreteras y señalética urbana',
+    image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80',
+    features: ['Alta reflectividad', 'Larga durabilidad', 'Aplicación rápida'],
+    slug: 'pinturas-marcaje',
+  },
+  {
+    id: 2,
+    title: 'Materiales Termoplásticos',
+    description: 'Soluciones termoplásticas con superior adherencia y visibilidad nocturna',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80',
+    features: ['Termoplástico premium', 'Excelente adherencia', 'Visibilidad nocturna'],
+    slug: 'termoplasticos',
+  },
+  {
+    id: 3,
+    title: 'Perlas de Vidrio',
+    description: 'Perlas reflectoras de alta calidad para máxima visibilidad',
+    image: 'https://images.unsplash.com/photo-1581092161562-40038e57d0f7?w=600&q=80',
+    features: ['Alta reflectividad', 'Larga durabilidad', 'Calidad ISO'],
+    slug: 'perlas-vidrio',
+  },
+  {
+    id: 4,
+    title: 'Soluciones de Seguridad Vial',
+    description: 'Sistemas integrales de señalización y protección para infraestructura moderna',
+    image: 'https://images.unsplash.com/photo-1581092178562-40038e57d0f7?w=600&q=80',
+    features: ['Sistemas integrales', 'Fácil instalación', 'Mantenimiento simplificado'],
+    slug: 'seguridad-vial',
+  },
+];
+---
+
+<BaseLayout
+  lang={lang}
+  title="Productos | CNSA Paraguay"
+  description="Conozca nuestro portafolio de productos de marcaje vial, materiales termoplásticos y soluciones de seguridad en carreteras."
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-b from-dark-secondary to-dark pt-32 pb-16">
+    <div class="container-premium">
+      <h1 class="text-5xl md:text-6xl font-heading font-bold text-white mb-6">
+        Nuestros Productos
+      </h1>
+      <p class="text-xl text-neutral-gray max-w-3xl">
+        Soluciones completas de marcaje vial, materiales termoplásticos y seguridad en carreteras de calidad mundial.
+      </p>
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <Section title="Catálogo de Productos">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {products.map(product => (
+        <Card class="overflow-hidden hover:shadow-premium">
+          <div class="relative h-64 overflow-hidden rounded-md mb-6 -m-6 mb-6">
+            <img
+              src={product.image}
+              alt={product.title}
+              class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+            />
+          </div>
+          <h3 class="text-2xl font-heading font-bold text-white mb-3">
+            {product.title}
+          </h3>
+          <p class="text-neutral-gray mb-6">{product.description}</p>
+
+          <div class="mb-6">
+            <h4 class="text-sm font-heading font-bold text-primary mb-3">Características</h4>
+            <ul class="space-y-2">
+              {product.features.map(feature => (
+                <li class="text-sm text-neutral-gray flex items-start gap-2">
+                  <span class="text-primary mt-1">✓</span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <Button href={`/products/${product.slug}`} variant="primary">
+            Ver Detalles
+          </Button>
+        </Card>
+      ))}
+    </div>
+  </Section>
+
+  <!-- Product Categories -->
+  <Section title="Categorías de Productos" class="bg-dark-secondary">
+    <p class="text-lg text-neutral-gray max-w-3xl mb-12">
+      Nuestro portafolio cubre todas las necesidades de marcaje vial y seguridad en carreteras. Explora nuestras categorías principales:
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <Card class="text-center">
+        <div class="text-5xl mb-4">🎨</div>
+        <h4 class="font-heading font-bold text-white mb-2">Pinturas Viales</h4>
+        <p class="text-sm text-neutral-gray mb-4">Pinturas de alta reflectividad y durabilidad</p>
+        <Button href="/products" variant="ghost" size="sm">Ver →</Button>
+      </Card>
+
+      <Card class="text-center">
+        <div class="text-5xl mb-4">⚙️</div>
+        <h4 class="font-heading font-bold text-white mb-2">Termoplásticos</h4>
+        <p class="text-sm text-neutral-gray mb-4">Soluciones termoplásticas premium</p>
+        <Button href="/products" variant="ghost" size="sm">Ver →</Button>
+      </Card>
+
+      <Card class="text-center">
+        <div class="text-5xl mb-4">✨</div>
+        <h4 class="font-heading font-bold text-white mb-2">Perlas de Vidrio</h4>
+        <p class="text-sm text-neutral-gray mb-4">Perlas reflectoras de calidad ISO</p>
+        <Button href="/products" variant="ghost" size="sm">Ver →</Button>
+      </Card>
+
+      <Card class="text-center">
+        <div class="text-5xl mb-4">🛡️</div>
+        <h4 class="font-heading font-bold text-white mb-2">Seguridad Vial</h4>
+        <p class="text-sm text-neutral-gray mb-4">Sistemas integrales de protección</p>
+        <Button href="/products" variant="ghost" size="sm">Ver →</Button>
+      </Card>
+    </div>
+  </Section>
+
+  <!-- CTA -->
+  <Section class="bg-primary text-dark text-center">
+    <h2 class="text-4xl md:text-5xl font-heading font-bold mb-6">
+      ¿Necesitas una Solución Personalizada?
+    </h2>
+    <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+      Contacta a nuestro equipo de especialistas para obtener asesoramiento técnico y cotizaciones.
+    </p>
+    <Button href="/contact" variant="secondary" size="lg">
+      Solicitar Cotización
+    </Button>
+  </Section>
+</BaseLayout>

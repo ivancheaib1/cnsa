@@ -1,0 +1,165 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/ui/Section.astro';
+import Card from '@/components/ui/Card.astro';
+import Button from '@/components/ui/Button.astro';
+
+const lang = 'es';
+---
+
+<BaseLayout
+  lang={lang}
+  title="Sobre CNSA Paraguay | Expertos en Marcaje Vial"
+  description="Conoce la historia, misión y visión de CNSA Paraguay, líder en soluciones de seguridad vial y marcaje de carreteras."
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-b from-dark-secondary to-dark pt-32 pb-16">
+    <div class="container-premium">
+      <h1 class="text-5xl md:text-6xl font-heading font-bold text-white mb-6">
+        Sobre CNSA Paraguay
+      </h1>
+      <p class="text-xl text-neutral-gray max-w-3xl">
+        Más de 20 años de innovación y excelencia en soluciones de marcaje vial y seguridad en carreteras.
+      </p>
+    </div>
+  </section>
+
+  <!-- Company Story -->
+  <Section title="Nuestra Historia">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
+      <div>
+        <p class="text-lg text-neutral-gray mb-6">
+          CNSA Paraguay fue fundada con una misión clara: transformar la seguridad vial en la región mediante soluciones premium de marcaje y señalización. Lo que comenzó como una pequeña operación se ha convertido en una empresa líder reconocida por gobiernos, municipalidades y empresas constructoras en toda Sudamérica.
+        </p>
+        <p class="text-lg text-neutral-gray mb-6">
+          Nuestro compromiso con la calidad, la innovación tecnológica y la sostenibilidad ambiental nos ha permitido ganar la confianza de miles de clientes y posicionarnos como referentes en la industria.
+        </p>
+      </div>
+      <img
+        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80"
+        alt="Company History"
+        class="rounded-md"
+      />
+    </div>
+  </Section>
+
+  <!-- Mission, Vision, Values -->
+  <Section class="bg-dark-secondary">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <Card>
+        <div class="text-5xl mb-4">🎯</div>
+        <h3 class="text-2xl font-heading font-bold text-white mb-4">Misión</h3>
+        <p class="text-neutral-gray">
+          Proveer soluciones premium de marcaje vial y seguridad en carreteras que mejoren la movilidad, reduzcan accidentes y contribuyan al desarrollo sostenible de la región.
+        </p>
+      </Card>
+
+      <Card>
+        <div class="text-5xl mb-4">👁️</div>
+        <h3 class="text-2xl font-heading font-bold text-white mb-4">Visión</h3>
+        <p class="text-neutral-gray">
+          Ser la empresa líder en soluciones de infraestructura vial en Sudamérica, reconocida por su innovación, calidad y compromiso con la seguridad.
+        </p>
+      </Card>
+
+      <Card>
+        <div class="text-5xl mb-4">💎</div>
+        <h3 class="text-2xl font-heading font-bold text-white mb-4">Valores</h3>
+        <p class="text-neutral-gray">
+          Integridad, excelencia, innovación, responsabilidad social y respeto por el medio ambiente guían cada decisión que tomamos.
+        </p>
+      </Card>
+    </div>
+  </Section>
+
+  <!-- Manufacturing Excellence -->
+  <Section title="Excelencia en Manufactura">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <img
+        src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80"
+        alt="Manufacturing"
+        class="rounded-md"
+      />
+      <div>
+        <h3 class="text-3xl font-heading font-bold text-white mb-6">Producción de Clase Mundial</h3>
+        <p class="text-lg text-neutral-gray mb-6">
+          Nuestras instalaciones de producción cuentan con tecnología de última generación, procesos automatizados y sistemas de control de calidad de clase mundial.
+        </p>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start gap-4">
+            <span class="text-primary text-2xl font-bold">1</span>
+            <div>
+              <h4 class="font-heading font-bold text-white mb-2">Laboratorio Avanzado</h4>
+              <p class="text-neutral-gray">Equipos de prueba certificados internacionalmente</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <span class="text-primary text-2xl font-bold">2</span>
+            <div>
+              <h4 class="font-heading font-bold text-white mb-2">Control de Calidad Riguroso</h4>
+              <p class="text-neutral-gray">Cumplimiento de normas ISO y estándares internacionales</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <span class="text-primary text-2xl font-bold">3</span>
+            <div>
+              <h4 class="font-heading font-bold text-white mb-2">Sostenibilidad Ambiental</h4>
+              <p class="text-neutral-gray">Procesos eco-friendly y materiales reciclables</p>
+            </div>
+          </div>
+        </div>
+
+        <Button href="/products" variant="primary">Conocer Nuestros Productos</Button>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Team Section -->
+  <Section title="Nuestro Equipo" class="bg-dark-secondary">
+    <p class="text-lg text-neutral-gray max-w-3xl mb-12">
+      Contamos con un equipo de profesionales altamente calificados con experiencia en ingeniería, química, manufactura y gestión empresarial.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <Card>
+        <div class="text-center">
+          <div class="w-24 h-24 bg-gradient-to-br from-primary to-yellow-500 rounded-full mx-auto mb-4"></div>
+          <h4 class="text-xl font-heading font-bold text-white mb-2">Ingeniería</h4>
+          <p class="text-neutral-gray text-sm">Especialistas en formulación y procesos viales</p>
+        </div>
+      </Card>
+
+      <Card>
+        <div class="text-center">
+          <div class="w-24 h-24 bg-gradient-to-br from-primary to-yellow-500 rounded-full mx-auto mb-4"></div>
+          <h4 class="text-xl font-heading font-bold text-white mb-2">Producción</h4>
+          <p class="text-neutral-gray text-sm">Operadores y técnicos certificados</p>
+        </div>
+      </Card>
+
+      <Card>
+        <div class="text-center">
+          <div class="w-24 h-24 bg-gradient-to-br from-primary to-yellow-500 rounded-full mx-auto mb-4"></div>
+          <h4 class="text-xl font-heading font-bold text-white mb-2">Calidad</h4>
+          <p class="text-neutral-gray text-sm">Inspectores y analistas de laboratorio</p>
+        </div>
+      </Card>
+    </div>
+  </Section>
+
+  <!-- CTA Section -->
+  <Section class="bg-primary text-dark text-center">
+    <h2 class="text-4xl md:text-5xl font-heading font-bold mb-6">
+      ¿Interesado en Trabajar Con Nosotros?
+    </h2>
+    <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+      Contáctanos para cotizaciones, asociaciones comerciales o consultas técnicas.
+    </p>
+    <Button href="/contact" variant="secondary" size="lg">
+      Iniciar Conversación
+    </Button>
+  </Section>
+</BaseLayout>

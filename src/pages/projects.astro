@@ -1,0 +1,164 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/ui/Section.astro';
+import Card from '@/components/ui/Card.astro';
+import Button from '@/components/ui/Button.astro';
+
+const lang = 'es';
+
+const projects = [
+  {
+    id: 1,
+    title: 'Ruta 2 - Asunción a Coronel Oviedo',
+    location: 'Paraguay',
+    year: 2023,
+    image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80',
+    category: 'Carreteras',
+    description: '250 km de marcaje vial con materiales termoplásticos',
+  },
+  {
+    id: 2,
+    title: 'Sistema de Transporte Urbano - Asunción',
+    location: 'Asunción, Paraguay',
+    year: 2023,
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80',
+    category: 'Urbano',
+    description: 'Señalización completa para carriles de BRT',
+  },
+  {
+    id: 3,
+    title: 'Proyecto de Seguridad Vial - Ruta 1',
+    location: 'Paraguay',
+    year: 2022,
+    image: 'https://images.unsplash.com/photo-1581092162562-40038e57d0f7?w=600&q=80',
+    category: 'Seguridad',
+    description: 'Implementación de líneas dobles y señalización preventiva',
+  },
+  {
+    id: 4,
+    title: 'Estacionamiento Premium - Centro Comercial',
+    location: 'Asunción',
+    year: 2022,
+    image: 'https://images.unsplash.com/photo-1581092162562-40038e57d0f7?w=600&q=80',
+    category: 'Estacionamiento',
+    description: 'Pinturas de marcaje con logo corporativo personalizado',
+  },
+];
+
+const stats = [
+  { label: 'Proyectos Completados', value: '500+' },
+  { label: 'Kilómetros Marcados', value: '5,000+' },
+  { label: 'Clientes Satisfechos', value: '200+' },
+  { label: 'Años de Experiencia', value: '20+' },
+];
+---
+
+<BaseLayout
+  lang={lang}
+  title="Proyectos | CNSA Paraguay"
+  description="Conozca nuestro portafolio de proyectos ejecutados en carreteras, espacios urbanos y estacionamientos."
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-b from-dark-secondary to-dark pt-32 pb-16">
+    <div class="container-premium">
+      <h1 class="text-5xl md:text-6xl font-heading font-bold text-white mb-6">
+        Nuestros Proyectos
+      </h1>
+      <p class="text-xl text-neutral-gray max-w-3xl">
+        Más de 500 proyectos ejecutados en carreteras, espacios urbanos y estacionamientos en toda la región.
+      </p>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="bg-dark-secondary py-16">
+    <div class="container-premium grid grid-cols-2 md:grid-cols-4 gap-8">
+      {stats.map(stat => (
+        <div class="text-center">
+          <p class="text-4xl md:text-5xl font-heading font-bold text-primary mb-2">
+            {stat.value}
+          </p>
+          <p class="text-neutral-gray">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Projects Grid -->
+  <Section title="Galería de Proyectos">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {projects.map(project => (
+        <Card class="overflow-hidden hover:shadow-premium">
+          <div class="relative h-64 overflow-hidden rounded-md mb-6 -m-6 mb-6">
+            <img
+              src={project.image}
+              alt={project.title}
+              class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+            />
+            <div class="absolute top-4 right-4 bg-primary text-dark px-4 py-2 rounded-full text-sm font-bold">
+              {project.category}
+            </div>
+          </div>
+
+          <h3 class="text-2xl font-heading font-bold text-white mb-2">
+            {project.title}
+          </h3>
+
+          <div class="flex items-center gap-2 text-neutral-gray text-sm mb-4">
+            <span>📍 {project.location}</span>
+            <span>•</span>
+            <span>{project.year}</span>
+          </div>
+
+          <p class="text-neutral-gray mb-6">{project.description}</p>
+
+          <Button href={`/projects/${project.id}`} variant="primary">
+            Ver Caso de Estudio
+          </Button>
+        </Card>
+      ))}
+    </div>
+  </Section>
+
+  <!-- Project Types -->
+  <Section title="Tipos de Proyectos" class="bg-dark-secondary">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <Card class="text-center">
+        <div class="text-5xl mb-4">🛣️</div>
+        <h4 class="font-heading font-bold text-white mb-2">Carreteras</h4>
+        <p class="text-sm text-neutral-gray">Marcaje de carreteras nacionales y regionales</p>
+      </Card>
+
+      <Card class="text-center">
+        <div class="text-5xl mb-4">🏙️</div>
+        <h4 class="font-heading font-bold text-white mb-2">Proyectos Urbanos</h4>
+        <p class="text-sm text-neutral-gray">Señalización en espacios urbanos y ciudades</p>
+      </Card>
+
+      <Card class="text-center">
+        <div class="text-5xl mb-4">🅿️</div>
+        <h4 class="font-heading font-bold text-white mb-2">Estacionamientos</h4>
+        <p class="text-sm text-neutral-gray">Marcaje en estacionamientos y zonas de carga</p>
+      </Card>
+
+      <Card class="text-center">
+        <div class="text-5xl mb-4">✈️</div>
+        <h4 class="font-heading font-bold text-white mb-2">Infraestructura</h4>
+        <p class="text-sm text-neutral-gray">Señalización en aeropuertos e instalaciones especiales</p>
+      </Card>
+    </div>
+  </Section>
+
+  <!-- CTA -->
+  <Section class="bg-primary text-dark text-center">
+    <h2 class="text-4xl md:text-5xl font-heading font-bold mb-6">
+      ¿Tienes un Proyecto en Mente?
+    </h2>
+    <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+      Contáctanos hoy para discutir tu proyecto y obtener una propuesta personalizada.
+    </p>
+    <Button href="/contact" variant="secondary" size="lg">
+      Iniciar Conversación
+    </Button>
+  </Section>
+</BaseLayout>

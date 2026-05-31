@@ -1,0 +1,225 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/ui/Section.astro';
+import Card from '@/components/ui/Card.astro';
+import Button from '@/components/ui/Button.astro';
+
+const lang = 'es';
+---
+
+<BaseLayout
+  lang={lang}
+  title="Contacto | CNSA Paraguay"
+  description="Contáctanos para solicitar cotizaciones o consultas sobre nuestros productos y servicios de marcaje vial."
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-b from-dark-secondary to-dark pt-32 pb-16">
+    <div class="container-premium">
+      <h1 class="text-5xl md:text-6xl font-heading font-bold text-white mb-6">
+        Contacto
+      </h1>
+      <p class="text-xl text-neutral-gray max-w-3xl">
+        Estamos listos para ayudarte. Contáctanos hoy mismo para conocer más sobre nuestros servicios.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <Section title="Envíanos un Mensaje">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <!-- Contact Information -->
+      <div class="lg:col-span-1">
+        <div class="space-y-8">
+          <Card>
+            <div class="flex items-start gap-4">
+              <div class="text-3xl">📍</div>
+              <div>
+                <h4 class="font-heading font-bold text-white mb-2">Ubicación</h4>
+                <p class="text-neutral-gray">Asunción, Paraguay</p>
+              </div>
+            </div>
+          </Card>
+
+          <Card>
+            <div class="flex items-start gap-4">
+              <div class="text-3xl">📞</div>
+              <div>
+                <h4 class="font-heading font-bold text-white mb-2">Teléfono</h4>
+                <p class="text-neutral-gray">+595 21 123 456</p>
+              </div>
+            </div>
+          </Card>
+
+          <Card>
+            <div class="flex items-start gap-4">
+              <div class="text-3xl">📧</div>
+              <div>
+                <h4 class="font-heading font-bold text-white mb-2">Email</h4>
+                <p class="text-neutral-gray">info@cnsaparaguay.com</p>
+              </div>
+            </div>
+          </Card>
+
+          <Card>
+            <div class="flex items-start gap-4">
+              <div class="text-3xl">🕐</div>
+              <div>
+                <h4 class="font-heading font-bold text-white mb-2">Horario</h4>
+                <p class="text-neutral-gray">Lunes a Viernes: 8:00 - 18:00</p>
+                <p class="text-neutral-gray">Sábados: 9:00 - 13:00</p>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="lg:col-span-2">
+        <form id="contact-form" class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-white font-heading font-bold mb-2">
+                Nombre Completo *
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full bg-dark-secondary border border-white/10 rounded-md px-4 py-3 text-white placeholder-neutral-gray focus:outline-none focus:border-primary transition-colors duration-300"
+                placeholder="Tu nombre"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block text-white font-heading font-bold mb-2">
+                Email *
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full bg-dark-secondary border border-white/10 rounded-md px-4 py-3 text-white placeholder-neutral-gray focus:outline-none focus:border-primary transition-colors duration-300"
+                placeholder="tu@email.com"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="phone" class="block text-white font-heading font-bold mb-2">
+                Teléfono
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="w-full bg-dark-secondary border border-white/10 rounded-md px-4 py-3 text-white placeholder-neutral-gray focus:outline-none focus:border-primary transition-colors duration-300"
+                placeholder="+595 123 456"
+              />
+            </div>
+
+            <div>
+              <label for="company" class="block text-white font-heading font-bold mb-2">
+                Empresa
+              </label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                class="w-full bg-dark-secondary border border-white/10 rounded-md px-4 py-3 text-white placeholder-neutral-gray focus:outline-none focus:border-primary transition-colors duration-300"
+                placeholder="Tu empresa"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="subject" class="block text-white font-heading font-bold mb-2">
+              Asunto *
+            </label>
+            <select
+              id="subject"
+              name="subject"
+              required
+              class="w-full bg-dark-secondary border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors duration-300"
+            >
+              <option value="">Selecciona un asunto</option>
+              <option value="cotizacion">Solicitar Cotización</option>
+              <option value="consulta">Consulta Técnica</option>
+              <option value="asociacion">Propuesta de Asociación</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="message" class="block text-white font-heading font-bold mb-2">
+              Mensaje *
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows="6"
+              class="w-full bg-dark-secondary border border-white/10 rounded-md px-4 py-3 text-white placeholder-neutral-gray focus:outline-none focus:border-primary transition-colors duration-300 resize-none"
+              placeholder="Tu mensaje..."
+            ></textarea>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <input
+              type="checkbox"
+              id="privacy"
+              name="privacy"
+              required
+              class="mt-1"
+            />
+            <label for="privacy" class="text-neutral-gray text-sm">
+              Acepto la política de privacidad y autorizo el procesamiento de mis datos personales
+            </label>
+          </div>
+
+          <Button type="submit" variant="primary" size="lg" class="w-full">
+            Enviar Mensaje
+          </Button>
+        </form>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Map Section -->
+  <Section title="Ubicación" class="bg-dark-secondary">
+    <div class="w-full h-96 bg-neutral-gray/20 rounded-md flex items-center justify-center">
+      <p class="text-neutral-gray">Mapa de ubicación - Asunción, Paraguay</p>
+    </div>
+  </Section>
+</BaseLayout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Get form data
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+
+      // Log form data (in production, send to backend)
+      console.log('Form submitted:', data);
+
+      // Show success message
+      const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const originalText = button.textContent;
+      button.textContent = '✓ Mensaje Enviado';
+      button.disabled = true;
+
+      setTimeout(() => {
+        form.reset();
+        button.textContent = originalText;
+        button.disabled = false;
+      }, 3000);
+    });
+  }
+</script>
