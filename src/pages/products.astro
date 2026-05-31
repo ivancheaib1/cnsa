@@ -9,28 +9,74 @@ const lang = 'es';
 
 const products = [
   {
-    title: 'Pinturas de Marcaje Vial',
-    description: 'Pinturas de alta reflectividad y durabilidad para carreteras y señalética urbana.',
+    title: 'Tintas e Vernizes',
+    description: 'Pinturas de alta reflectividad y durabilidad superior',
     icon: 'paint',
     image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80',
+    slug: 'tintas-vernizes',
   },
   {
-    title: 'Materiales Termoplásticos',
-    description: 'Soluciones termoplásticas innovadoras con superior adherencia y visibilidad nocturna.',
+    title: 'Termoplásticos',
+    description: 'Soluciones termoplásticas con adherencia excepcional',
     icon: 'truck',
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80',
+    slug: 'termoplasticos',
   },
   {
-    title: 'Perlas de Vidrio',
-    description: 'Perlas reflectoras de alta calidad para máxima visibilidad en cualquier condición.',
+    title: 'Plástico a Frio',
+    description: 'Aplicación rápida sin requerir calor',
     icon: 'zap',
     image: 'https://images.unsplash.com/photo-1581092162562-40038e57d0f7?w=600&q=80',
+    slug: 'plastico-frio',
   },
   {
-    title: 'Soluciones de Seguridad Vial',
-    description: 'Sistemas integrales de señalización y protección para infraestructura moderna.',
+    title: 'Piso Podotácil',
+    description: 'Pisos tácti para orientación de personas',
     icon: 'shield',
     image: 'https://images.unsplash.com/photo-1581092178562-40038e57d0f7?w=600&q=80',
+    slug: 'piso-podotactil',
+  },
+  {
+    title: 'Microesferas de Vidrio',
+    description: 'Perlas reflectoras de alta calidad',
+    icon: 'zap',
+    image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80',
+    slug: 'microesferas-vidrio',
+  },
+  {
+    title: 'Tachas e Tachões',
+    description: 'Elementos de fijación vial',
+    icon: 'target',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80',
+    slug: 'tachas-tachoes',
+  },
+  {
+    title: 'Colas e Adesivos',
+    description: 'Adhesivos para aplicaciones viales',
+    icon: 'briefcase',
+    image: 'https://images.unsplash.com/photo-1581092162562-40038e57d0f7?w=600&q=80',
+    slug: 'colas-adesivos',
+  },
+  {
+    title: 'Pisos Industriales',
+    description: 'Pisos para entornos industriales',
+    icon: 'factory',
+    image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80',
+    slug: 'pisos-industriales',
+  },
+  {
+    title: 'Pisos Decorativos',
+    description: 'Pisos decorativos y de seguridad',
+    icon: 'award',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80',
+    slug: 'pisos-decorativos',
+  },
+  {
+    title: 'Préformados',
+    description: 'Elementos prefabricados viales',
+    icon: 'grid',
+    image: 'https://images.unsplash.com/photo-1581092162562-40038e57d0f7?w=600&q=80',
+    slug: 'preformados',
   },
 ];
 ---
@@ -54,10 +100,10 @@ const products = [
 
   <!-- Products Grid -->
   <Section title="Catálogo de Productos">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
       {products.map(product => (
-        <Card class="overflow-hidden group">
-          <div class="relative h-64 overflow-hidden rounded-sm mb-6 -m-6 mb-6">
+        <Card class="overflow-hidden group flex flex-col">
+          <div class="relative h-48 overflow-hidden rounded-sm mb-6 -m-6 mb-6">
             <img
               src={product.image}
               alt={product.title}
@@ -65,15 +111,15 @@ const products = [
             />
           </div>
           <Icon name={product.icon as any} size={32} class="text-primary mb-4" />
-          <h3 class="text-2xl font-body font-bold text-white mb-3">
+          <h3 class="text-base font-body font-bold text-white mb-2 flex-1">
             {product.title}
           </h3>
-          <p class="text-gray mb-6">{product.description}</p>
+          <p class="text-gray text-xs mb-6 flex-1">{product.description}</p>
 
           <div class="flex items-center gap-2 mt-auto pt-4 border-t border-[rgba(255,255,255,0.08)]">
-            <Button href="/contact" variant="ghost" size="sm">
-              Más Información
-              <Icon name="arrow-right" size={16} />
+            <Button href={`/products/${product.slug}`} variant="primary" size="sm">
+              Ver
+              <Icon name="arrow-right" size={14} />
             </Button>
           </div>
         </Card>
