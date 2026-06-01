@@ -26,13 +26,20 @@ const variantStyles = {
   outline: 'border border-gray-light text-gray-light hover:border-white hover:text-white',
 };
 
+const lightModeOverrides = {
+  primary: 'light-mode:bg-primary light-mode:text-white light-mode:hover:bg-primary/90',
+  secondary: 'light-mode:border-primary light-mode:text-primary light-mode:hover:bg-primary/10',
+  ghost: 'light-mode:text-gray-700 light-mode:hover:text-gray-900',
+  outline: 'light-mode:border-gray-400 light-mode:text-gray-700 light-mode:hover:border-gray-900 light-mode:hover:text-gray-900 light-mode:hover:bg-gray-100',
+};
+
 const sizeStyles = {
   sm: 'px-4 py-2 text-sm',
   md: 'px-6 py-3 text-base',
   lg: 'px-8 py-4 text-lg font-semibold',
 };
 
-const combinedClass = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
+const combinedClass = `${baseStyles} ${variantStyles[variant]} ${lightModeOverrides[variant]} ${sizeStyles[size]} ${className}`;
 ---
 
 {href ? (

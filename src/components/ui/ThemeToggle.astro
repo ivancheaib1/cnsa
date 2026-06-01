@@ -1,0 +1,130 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<label id="theme-toggle-label" for="chk" class={`theme-toggle ${className}`}>
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="icon-sun" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <circle cx="12" cy="12" r="4"></circle>
+    <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="icon-moon" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+  </svg>
+  <input type="checkbox" id="chk" />
+  <div id="theme-toggle-ball">
+    <span class="sr-only">Toggle dark/light theme</span>
+  </div>
+</label>
+
+<style>
+  .theme-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 50px;
+    height: 26px;
+    background-color: #1A1A1A;
+    border-radius: 34px;
+    padding: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .theme-toggle:hover {
+    background-color: #252525;
+  }
+
+  .theme-toggle input {
+    display: none;
+  }
+
+  .theme-toggle #theme-toggle-ball {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background-color: white;
+    border-radius: 50%;
+    left: 2px;
+    transition: left 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .theme-toggle input:checked + #theme-toggle-ball {
+    left: 26px;
+  }
+
+  .theme-toggle .icon-sun {
+    position: absolute;
+    left: 6px;
+    color: #E05A1A;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .theme-toggle .icon-moon {
+    position: absolute;
+    right: 6px;
+    color: #E05A1A;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .theme-toggle input:checked ~ .icon-sun {
+    opacity: 0;
+  }
+
+  .theme-toggle input:checked ~ .icon-moon {
+    opacity: 1;
+  }
+
+  :global(body.light-mode) .theme-toggle {
+    background-color: #E5E7EB;
+  }
+
+  :global(body.light-mode) .theme-toggle:hover {
+    background-color: #D1D5DB;
+  }
+
+  :global(body.light-mode) .theme-toggle #theme-toggle-ball {
+    background-color: white;
+  }
+
+  :global(body.light-mode) .theme-toggle .icon-sun,
+  :global(body.light-mode) .theme-toggle .icon-moon {
+    color: #E05A1A;
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('chk') as HTMLInputElement;
+  const htmlElement = document.documentElement;
+  const body = document.body;
+
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') {
+    htmlElement.classList.add('light-mode');
+    body.classList.add('light-mode');
+    toggle.checked = true;
+  }
+
+  toggle?.addEventListener('change', () => {
+    if (toggle.checked) {
+      htmlElement.classList.add('light-mode');
+      body.classList.add('light-mode');
+      localStorage.setItem('theme', 'light');
+    } else {
+      htmlElement.classList.remove('light-mode');
+      body.classList.remove('light-mode');
+      localStorage.setItem('theme', 'dark');
+    }
+    window.dispatchEvent(new Event('light-mode-changed'));
+  });
+</script>

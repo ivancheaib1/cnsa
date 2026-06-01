@@ -164,7 +164,7 @@ const projects = [
 
   <!-- Products Section -->
   <Section id="products" title="Nuestros Productos" subtitle="Soluciones completas para cada necesidad">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {products.map(product => (
         <Card class="flex flex-col">
           <Icon name={product.icon as any} size={32} class="text-primary mb-4" />
@@ -212,6 +212,88 @@ const projects = [
         </ul>
         <Button href="/about" variant="primary">Conocer Más</Button>
       </div>
+    </div>
+  </Section>
+
+  <!-- Avery Dennison & Technology Section -->
+  <Section title="Tecnología Premium - Cartelería Reflectiva Única en Paraguay" class="bg-dark-secondary">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h3 class="text-3xl font-body font-bold text-white mb-6">Representante Oficial de Avery Dennison</h3>
+        <p class="text-base text-gray mb-4">
+          CNSA Paraguay es el representante oficial de Avery Dennison en el país, lo que nos permite ofrecer soluciones de cartelería reflectiva de calidad mundial.
+        </p>
+        <p class="text-base text-gray mb-6">
+          Somos la única empresa en Paraguay que cuenta con la tecnología avanzada para imprimir cartelería con reflectividad de calidad única, garantizando máxima visibilidad y durabilidad en todas las condiciones climáticas.
+        </p>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <Icon name="check" size={20} class="text-primary mt-1 flex-shrink-0" />
+            <span class="text-gray">Tecnología Avery Dennison de clase mundial</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <Icon name="check" size={20} class="text-primary mt-1 flex-shrink-0" />
+            <span class="text-gray">Cartelería con reflectividad única en Paraguay</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <Icon name="check" size={20} class="text-primary mt-1 flex-shrink-0" />
+            <span class="text-gray">Durabilidad garantizada en clima tropical</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <Icon name="check" size={20} class="text-primary mt-1 flex-shrink-0" />
+            <span class="text-gray">Cumplimiento de estándares internacionales</span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <img
+          src="https://images.unsplash.com/photo-1581092162562-40038e57d0f7?w=600&q=80"
+          alt="Tecnología de Cartelería Reflectiva"
+          class="rounded-sm w-full"
+        />
+      </div>
+    </div>
+  </Section>
+
+  <!-- Signaling Solutions Section -->
+  <Section title="Soluciones Integrales de Señalización">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <Card class="flex flex-col">
+        <Icon name="building" size={40} class="text-primary mb-4" />
+        <h3 class="text-xl font-body font-bold text-white mb-3">Señalización Horizontal</h3>
+        <p class="text-gray text-sm mb-4 flex-1">
+          Líneas, flechas y símbolos en pavimentos con máxima reflectividad y durabilidad. Utilizamos pintura vial, termoplásticos y sistemas de aplicación en frío para óptimos resultados.
+        </p>
+        <Button href="/products" variant="ghost" size="sm" class="self-start">Conocer más →</Button>
+      </Card>
+
+      <Card class="flex flex-col">
+        <Icon name="target" size={40} class="text-primary mb-4" />
+        <h3 class="text-xl font-body font-bold text-white mb-3">Señalización Vertical</h3>
+        <p class="text-gray text-sm mb-4 flex-1">
+          Carteles y señales con cartelería reflectiva de clase mundial. Garantizamos visibilidad óptima tanto de día como de noche con tecnología Avery Dennison.
+        </p>
+        <Button href="/products" variant="ghost" size="sm" class="self-start">Explorar →</Button>
+      </Card>
+
+      <Card class="flex flex-col">
+        <Icon name="shield" size={40} class="text-primary mb-4" />
+        <h3 class="text-xl font-body font-bold text-white mb-3">Señalización Táctil</h3>
+        <p class="text-gray text-sm mb-4 flex-1">
+          Pisos podotácti y señalización táctil para accesibilidad universal. Cumple con normas ISO 23601 para guiar a personas con discapacidad visual.
+        </p>
+        <Button href="/products" variant="ghost" size="sm" class="self-start">Más información →</Button>
+      </Card>
+    </div>
+
+    <div class="mt-12 bg-dark-secondary border border-[rgba(255,255,255,0.08)] rounded-sm p-8">
+      <h3 class="text-2xl font-body font-bold text-white mb-4">Evolución de la Señalización Horizontal</h3>
+      <p class="text-gray mb-4">
+        La señalización vial ha evolucionado significativamente en los últimos años. Desde pintura convencional hasta sistemas termoplásticos y plástico en frío, cada tecnología ofrece ventajas específicas según el contexto y presupuesto.
+      </p>
+      <p class="text-gray">
+        En CNSA Paraguay dominamos todas estas tecnologías y seleccionamos la solución óptima para cada proyecto, considerando durabilidad, visibilidad, seguridad y costos de mantenimiento.
+      </p>
     </div>
   </Section>
 

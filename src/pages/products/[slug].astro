@@ -5,198 +5,237 @@ import Card from '@/components/ui/Card.astro';
 import Button from '@/components/ui/Button.astro';
 import Icon from '@/components/ui/Icon.astro';
 
+export async function getStaticPaths() {
+  const products = [
+    'tintas-Barniz',
+    'termoplasticos',
+    'plastico-frio',
+    'piso-podotactil',
+    'microesferas-vidrio',
+    'tachas-tachoes',
+    'colas-adesivos',
+    'pisos-industriales',
+    'pisos-decorativos',
+    'preformados',
+  ];
+
+  return products.map(slug => ({
+    params: { slug },
+  }));
+}
+
 const { slug } = Astro.params;
 
 const productData: Record<string, any> = {
-  'tintas-vernizes': {
-    title: 'Tintas e Vernizes',
+  'tintas-Barniz': {
+    title: 'Tintas y Barniz',
     icon: 'paint',
     subtitle: 'Pinturas de marcaje vial de alta reflectividad',
-    description: 'Nuestras tintas y vernices ofrecen la máxima reflectividad y durabilidad para marcaje vial en cualquier condición climática.',
+    description: 'Nuestras tintas y vernices ofrecen la máxima reflectividad y durabilidad para marcaje vial en cualquier condición climática. Producto de línea profesional con acabado brillante y resistencia superior a rayos UV.',
     features: [
-      'Alta reflectividad nocturna',
-      'Resistencia a rayos UV',
-      'Durabilidad excepcional',
-      'Fácil aplicación',
-      'Eco-amigable',
+      'Alta reflectividad nocturna (R3 mínimo)',
+      'Resistencia excepcional a rayos UV',
+      'Durabilidad 24-36 meses',
+      'Fácil aplicación con rodillo o brocha',
+      'Eco-amigable y de bajo VOC',
     ],
     specs: {
       'Reflectividad': 'R3 (mínimo)',
       'Durabilidad': '24-36 meses',
       'Rendimiento': '8-10 m²/litro',
       'Secado': '30-60 minutos',
+      'Temperatura': '-5°C a +45°C',
     },
+    applications: ['Carreteras nacionales', 'Estacionamientos', 'Vías urbanas', 'Aeropuertos'],
   },
   'termoplasticos': {
     title: 'Termoplásticos',
     icon: 'truck',
     subtitle: 'Materiales termoplásticos con adherencia excepcional',
-    description: 'Soluciones termoplásticas de última generación que combinan excelente adherencia con visibilidad nocturna superior.',
+    description: 'Soluciones termoplásticas de última generación que combinan excelente adherencia con visibilidad nocturna superior. Aplicación en caliente para máxima durabilidad y acabado profesional.',
     features: [
-      'Adherencia superior',
-      'Máxima durabilidad',
-      'Instalación rápida',
-      'Reflectividad mejorada',
-      'Resistencia al tráfico pesado',
+      'Adherencia superior al asfalto',
+      'Máxima durabilidad (36-48 meses)',
+      'Instalación rápida con maquinaria especializada',
+      'Reflectividad mejorada con microesferas integradas',
+      'Resistencia al tráfico pesado y clima extremo',
     ],
     specs: {
       'Espesor': '2-4mm',
       'Temperatura aplicación': '160-200°C',
       'Durabilidad': '36-48 meses',
       'Reflectividad': 'RA1-RA2',
+      'Densidad': '1.5-1.8 g/cm³',
     },
+    applications: ['Carreteras de alto tráfico', 'Líneas de seguridad', 'Flechas direccionales', 'Marcas de prohibición'],
   },
   'plastico-frio': {
     title: 'Plástico a Frio',
     icon: 'zap',
     subtitle: 'Aplicación de plástico sin requerir calor',
-    description: 'Innovadora solución de aplicación en frío que elimina la necesidad de equipos de calentamiento, reduciendo costos y complejidad.',
+    description: 'Innovadora solución de aplicación en frío que elimina la necesidad de equipos de calentamiento, reduciendo costos y complejidad. Ideal para aplicaciones rápidas y flexibles.',
     features: [
-      'Aplicación sin calor',
-      'Costos reducidos',
-      'Instalación rápida',
-      'Seguro para operarios',
-      'Versátil',
+      'Aplicación sin calor - completamente seguro',
+      'Costos de instalación reducidos',
+      'Instalación ultra-rápida (5-10 min)',
+      'Seguro para operarios - sin humos',
+      'Versátil para múltiples aplicaciones',
     ],
     specs: {
       'Tiempo secado': '15-30 minutos',
-      'Temperatura aplicación': 'Ambiente',
+      'Temperatura aplicación': 'Ambiente (-5°C a +45°C)',
       'Durabilidad': '18-24 meses',
       'Rendimiento': '4-6 m²/componente',
+      'Coef. Fricción': '0.5-0.8',
     },
+    applications: ['Estacionamientos temporales', 'Eventos especiales', 'Señalización rápida', 'Áreas de mantenimiento'],
   },
   'piso-podotactil': {
     title: 'Piso Podotácil',
     icon: 'shield',
     subtitle: 'Pisos tácti para orientación de personas',
-    description: 'Pisos podotácti especialmente diseñados para guiar y proteger a personas con discapacidad visual en espacios públicos.',
+    description: 'Pisos podotácti especialmente diseñados para guiar y proteger a personas con discapacidad visual en espacios públicos. Cumple con normas ISO 23601 de accesibilidad.',
     features: [
-      'Superficie táctil mejorada',
-      'Durabilidad extrema',
-      'Antideslizante',
-      'Fácil limpieza',
-      'Cumple estándares ISO',
+      'Superficie táctil mejorada - fácil de percibir',
+      'Durabilidad extrema - resistencia al paso',
+      'Antideslizante en condiciones secas y mojadas',
+      'Fácil limpieza y mantenimiento',
+      'Cumple estándares ISO 23601',
     ],
     specs: {
       'Espesor': '3-5mm',
-      'Coeficiente fricción': '0.6 mínimo',
+      'Coeficiente fricción': '0.6 mínimo (seco/mojado)',
       'Durabilidad': '48+ meses',
       'Instalación': 'Adhesiva o mecánica',
+      'Resistencia compresión': '40+ MPa',
     },
+    applications: ['Estaciones de transporte', 'Espacios públicos', 'Edificios administrativos', 'Hospitales y clínicas'],
   },
   'microesferas-vidrio': {
     title: 'Microesferas de Vidrio',
     icon: 'zap',
     subtitle: 'Perlas reflectoras de alta calidad',
-    description: 'Microesferas de vidrio de grado óptico que proporcionan máxima reflectividad para sistemas de marcaje vial.',
+    description: 'Microesferas de vidrio de grado óptico que proporcionan máxima reflectividad para sistemas de marcaje vial. Aumentan significativamente la visibilidad nocturna del marcaje.',
     features: [
-      'Reflectividad superior',
-      'Grado óptico',
-      'Tamaño uniforme',
-      'Compatibilidad universal',
-      'Durabilidad garantizada',
+      'Reflectividad superior - garantizada',
+      'Grado óptico - pureza 99.9%',
+      'Tamaño uniforme - aplicación controlada',
+      'Compatibilidad universal con todo tipo de aglutinantes',
+      'Durabilidad garantizada 48+ meses',
     ],
     specs: {
       'Tamaño partícula': '90-150 micras',
       'Densidad': '2.5 g/cm³',
-      'Pureza': '99.9%',
-      'Índice refracción': 'n=1.50',
+      'Pureza': '99.9% (SiO₂)',
+      'Índice refracción': 'n=1.50 (mínimo)',
+      'Reflectancia': 'RA1-RA2',
     },
+    applications: ['Refuerzo en pinturas viales', 'Marcas termoplásticas', 'Sistemas de señalización', 'Película retroreflectante'],
   },
   'tachas-tachoes': {
     title: 'Tachas e Tachões',
     icon: 'target',
     subtitle: 'Elementos de fijación para demarcación vial',
-    description: 'Tachas y tachones de acero inoxidable y plástico reforzado para demarcación segura en carreteras y estacionamientos.',
+    description: 'Tachas y tachones de acero inoxidable y plástico reforzado para demarcación segura en carreteras y estacionamientos. Proporcionan feedback táctil y visual a los conductores.',
     features: [
-      'Durabilidad extrema',
-      'Resistencia al impacto',
-      'Reflectividad integrada',
-      'Fácil instalación',
-      'Múltiples colores',
+      'Durabilidad extrema - resistencia al impacto',
+      'Resistencia al impacto vehicular',
+      'Reflectividad integrada con vidrio óptico',
+      'Fácil instalación adhesiva o mecánica',
+      'Múltiples colores disponibles',
     ],
     specs: {
-      'Material': 'Acero inoxidable / Plástico',
+      'Material': 'Acero inoxidable 304 / Plástico reforzado',
       'Altura': '20-30mm',
-      'Resistencia': 'Clase D400+',
-      'Reflectores': 'Ópticos integrados',
+      'Resistencia': 'Clase D400+ (hasta 40 toneladas)',
+      'Reflectores': 'Vidrio óptico integrado',
+      'Colores': 'Rojo, blanco, amarillo, ámbar',
     },
+    applications: ['Carreteras de alto tráfico', 'Estacionamientos', 'Límites de carriles', 'Separadores viales'],
   },
   'colas-adesivos': {
     title: 'Colas e Adesivos',
     icon: 'briefcase',
     subtitle: 'Adhesivos especializados para aplicaciones viales',
-    description: 'Colas y adhesivos de formulación especial diseñados para máxima adherencia en superficies viales de todo tipo.',
+    description: 'Colas y adhesivos de formulación especial diseñados para máxima adherencia en superficies viales de todo tipo. Compatible con asfalto, concreto y otros materiales.',
     features: [
-      'Adherencia excepcional',
-      'Resistencia ambiental',
-      'Aplicación controlada',
+      'Adherencia excepcional - resistencia al despegue',
+      'Resistencia ambiental - agua, sal, UV',
+      'Aplicación controlada - sin excesos',
       'Tiempos de secado optimizados',
-      'Eco-responsables',
+      'Eco-responsables y de bajo olor',
     ],
     specs: {
       'Tipo': 'Poliuretano / Acrílico',
       'Temperatura aplicación': '10-40°C',
       'Tiempo curado': '24-72 horas',
       'Resistencia cortante': '15+ N/mm²',
+      'Flexibilidad': 'Alta elasticidad post-curado',
     },
+    applications: ['Fijación de señales viales', 'Aplicación de cintas reflexivas', 'Pegado de elementos prefabricados', 'Reparación de marcas'],
   },
   'pisos-industriales': {
     title: 'Pisos Industriales',
     icon: 'factory',
     subtitle: 'Soluciones de piso para entornos industriales',
-    description: 'Sistemas de piso diseñados para ambientes industriales y comerciales con alta resistencia al desgarre y químicos.',
+    description: 'Sistemas de piso diseñados para ambientes industriales y comerciales con alta resistencia al desgarre y químicos. Durables, antideslizantes y de fácil mantenimiento.',
     features: [
-      'Resistencia química',
-      'Anti-estático',
-      'Fácil mantenimiento',
-      'Durabilidad industrial',
-      'Acabados personalizables',
+      'Resistencia química - ácidos, aceites, combustibles',
+      'Anti-estático - protección de equipos sensibles',
+      'Fácil mantenimiento - impermeabilidad',
+      'Durabilidad industrial - 60+ meses',
+      'Acabados personalizables según necesidad',
     ],
     specs: {
       'Espesor': '4-8mm',
       'Resistencia compresión': '50+ MPa',
-      'Compatibilidad': 'Ácidos, aceites, combustibles',
+      'Compatibilidad': 'Ácidos, aceites, combustibles, alcoholes',
       'Durabilidad': '60+ meses',
+      'Resistencia al deslizamiento': '0.6+',
     },
+    applications: ['Plantas manufactureras', 'Almacenes', 'Laboratorios', 'Talleres de mantenimiento'],
   },
   'pisos-decorativos': {
     title: 'Pisos Decorativos',
     icon: 'award',
     subtitle: 'Pisos decorativos y de seguridad personalizados',
-    description: 'Pisos decorativos que combinan estética con funcionalidad de seguridad para espacios comerciales y públicos.',
+    description: 'Pisos decorativos que combinan estética con funcionalidad de seguridad para espacios comerciales y públicos. Disponibles en múltiples colores y patrones.',
     features: [
-      'Diseños personalizables',
-      'Antideslizante',
-      'Fácil limpieza',
-      'Durabilidad estética',
-      'Amplitud cromática',
+      'Diseños personalizables - opciones ilimitadas',
+      'Antideslizante - seguridad garantizada',
+      'Fácil limpieza - superficies lisas',
+      'Durabilidad estética - colores permanentes',
+      'Amplitud cromática - 20+ colores disponibles',
     ],
     specs: {
       'Espesor': '3-5mm',
-      'Colores disponibles': '20+',
-      'Coef. fricción': '0.6-1.0',
+      'Colores disponibles': '20+ opciones',
+      'Coef. fricción': '0.6-1.0 (personalizable)',
       'Durabilidad': '48+ meses',
+      'Resistencia UV': 'Excelente',
     },
+    applications: ['Centros comerciales', 'Oficinas corporativas', 'Hospitales', 'Espacios públicos'],
   },
   'preformados': {
     title: 'Préformados',
     icon: 'grid',
     subtitle: 'Elementos prefabricados de aplicación rápida',
-    description: 'Elementos viales prefabricados que permiten aplicación rápida y precisa, reduciendo tiempos de ejecución de proyectos.',
+    description: 'Elementos viales prefabricados que permiten aplicación rápida y precisa, reduciendo tiempos de ejecución de proyectos. Calidad consistente garantizada.',
     features: [
-      'Aplicación ultra-rápida',
-      'Precisión garantizada',
-      'Calidad consistente',
-      'Reducción de desperdicios',
-      'Versatilidad de diseños',
+      'Aplicación ultra-rápida - 5-10 min/elemento',
+      'Precisión garantizada - moldes exactos',
+      'Calidad consistente - control de manufactura',
+      'Reducción de desperdicios - cero residuos',
+      'Versatilidad de diseños - todas las formas',
     ],
     specs: {
-      'Tipos': 'Líneas, flechas, símbolos',
+      'Tipos': 'Líneas, flechas, símbolos, letras',
       'Tamaños': 'Personalizables',
-      'Aplicación': '5-10 min/elemento',
+      'Tiempo aplicación': '5-10 minutos/elemento',
       'Durabilidad': '36+ meses',
+      'Material': 'Termoplástico de grado profesional',
     },
+    applications: ['Marcas viales rápidas', 'Señalización de eventos', 'Zonas de carga/descarga', 'Estacionamientos premium'],
   },
 };
 
@@ -207,13 +246,8 @@ if (!product) {
 }
 ---
 
-<BaseLayout
-  lang="es"
-  title={`${product.title} | CNSA Paraguay`}
-  description={product.subtitle}
->
-  <!-- Hero Section -->
-  <section class="bg-gradient-to-b from-dark-secondary to-dark pt-32 pb-16">
+<BaseLayout lang="es" title={`${product.title} | CNSA Paraguay`} description={product.subtitle}>
+  <section class="bg-gradient-to-b from-dark-secondary to-dark pt-32 pb-16 section-dark">
     <div class="container-premium">
       <div class="flex items-center gap-4 mb-6">
         <Icon name={product.icon} size={48} class="text-primary" />
@@ -227,7 +261,6 @@ if (!product) {
     </div>
   </section>
 
-  <!-- Product Overview -->
   <Section>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
       <img
@@ -244,7 +277,7 @@ if (!product) {
         </p>
 
         <div class="mb-8">
-          <h3 class="text-xl font-body font-bold text-white mb-4">Características</h3>
+          <h3 class="text-xl font-body font-bold text-white mb-4">Características Principales</h3>
           <ul class="space-y-3">
             {product.features.map((feature: string) => (
               <li class="flex items-start gap-3">
@@ -268,7 +301,6 @@ if (!product) {
     </div>
   </Section>
 
-  <!-- Specifications -->
   <Section title="Especificaciones Técnicas" class="bg-dark-secondary">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       {Object.entries(product.specs).map(([key, value]) => (
@@ -280,7 +312,17 @@ if (!product) {
     </div>
   </Section>
 
-  <!-- Related Products -->
+  <Section title="Aplicaciones">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {product.applications.map((app: string) => (
+        <Card class="flex items-start gap-4">
+          <Icon name="check" size={24} class="text-primary flex-shrink-0 mt-1" />
+          <p class="text-white font-body font-bold">{app}</p>
+        </Card>
+      ))}
+    </div>
+  </Section>
+
   <Section title="Productos Relacionados">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <Card class="text-center">
@@ -301,7 +343,6 @@ if (!product) {
     </div>
   </Section>
 
-  <!-- CTA Section -->
   <Section class="bg-gradient-orange text-white text-center">
     <h2 class="text-4xl md:text-5xl font-body font-bold mb-6">
       ¿Interesado en {product.title}?
@@ -321,3 +362,4 @@ if (!product) {
     </div>
   </Section>
 </BaseLayout>
+

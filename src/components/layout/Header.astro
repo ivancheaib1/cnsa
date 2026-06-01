@@ -1,6 +1,7 @@
 ---
 import Button from '@/components/ui/Button.astro';
 import Icon from '@/components/ui/Icon.astro';
+import ThemeToggle from '@/components/ui/ThemeToggle.astro';
 
 interface Props {
   lang?: 'es' | 'en' | 'pt';
@@ -52,7 +53,7 @@ const getNavigation = () => nav[lang as keyof typeof nav] || nav.es;
 const currentNav = getNavigation();
 ---
 
-<header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background: transparent;">
+<header id="main-header" class="relative transition-all duration-300" style="background: transparent;">
   <div class="container-premium py-5 md:py-6 flex justify-between items-center">
     <!-- Logo -->
     <a href={lang === 'es' ? '/' : `/${lang}/`} class="flex items-center gap-2 group">
@@ -73,7 +74,7 @@ const currentNav = getNavigation();
             {(item as any).dropdown && <Icon name="chevron-down" size={14} class="group-hover:rotate-180 transition-transform duration-300" />}
           </a>
           {(item as any).dropdown && (
-            <div class="absolute left-0 mt-0 w-48 bg-dark-secondary border border-[rgba(255,255,255,0.08)] rounded-sm shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2">
+            <div class="absolute left-0 mt-0 w-48 bg-dark-secondary border border-[rgba(255,255,255,0.08)] rounded-sm shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-2 dropdown-dark">
               {(item as any).dropdown.map((product: any) => (
                 <a
                   href={product.href}
@@ -88,8 +89,10 @@ const currentNav = getNavigation();
       ))}
     </nav>
 
-    <!-- Language Switcher & CTA -->
-    <div class="flex items-center gap-4">
+    <!-- Theme Toggle, Language Switcher & CTA -->
+    <div class="flex items-center gap-3">
+      <ThemeToggle />
+
       <!-- Language Switcher -->
       <div class="hidden md:flex gap-2">
         {['es', 'en', 'pt'].map(l => (
@@ -145,29 +148,13 @@ const currentNav = getNavigation();
 </header>
 
 <script>
-  const header = document.getElementById('main-header') as HTMLElement;
   const mobileMenuBtn = document.getElementById('mobile-menu-btn') as HTMLButtonElement;
   const mobileNav = document.getElementById('mobile-nav') as HTMLElement;
 
-  // Scroll-aware header
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header.style.background = 'rgba(8, 8, 8, 0.95)';
-      header.style.backdropFilter = 'blur(20px)';
-      header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.08)';
-    } else {
-      header.style.background = 'transparent';
-      header.style.backdropFilter = 'none';
-      header.style.borderBottom = 'none';
-    }
-  });
-
-  // Mobile menu toggle
   mobileMenuBtn?.addEventListener('click', () => {
     mobileNav?.classList.toggle('hidden');
   });
 
-  // Close menu when link is clicked
   document.querySelectorAll('#mobile-nav a').forEach(link => {
     link.addEventListener('click', () => {
       mobileNav?.classList.add('hidden');
