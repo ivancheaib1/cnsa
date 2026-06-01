@@ -1,0 +1,58 @@
+backend:
+  name: github
+  repo: ivancheaib1/cnsa
+  branch: main
+  base_url: https://api.github.com
+
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Slug", name: "slug", widget: "string", required: true }
+      - { label: "Excerpt", name: "excerpt", widget: "text", required: true }
+      - { label: "Category", name: "category", widget: "select", options: ["Seguridad Vial", "Tecnología", "Sostenibilidad", "Proyectos", "Noticias"], required: true }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Featured Image", name: "image", widget: "image", required: true }
+      - { label: "Read Time", name: "readTime", widget: "string", default: "5 min" }
+      - { label: "Published Date", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DD", required: true }
+      - { label: "Content", name: "body", widget: "markdown", required: true }
+
+  - name: "projects"
+    label: "Projects"
+    folder: "src/content/projects"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Slug", name: "slug", widget: "string", required: true }
+      - { label: "Location", name: "location", widget: "string" }
+      - { label: "Year", name: "year", widget: "number", valueType: "int" }
+      - { label: "Category", name: "category", widget: "select", options: ["Carreteras", "Urbano", "Seguridad", "Estacionamiento"], required: true }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Featured Image", name: "image", widget: "image", required: true }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Content", name: "body", widget: "markdown" }
+
+  - name: "products"
+    label: "Products"
+    folder: "src/content/products"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Slug", name: "slug", widget: "string", required: true }
+      - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - { label: "Description", name: "body", widget: "markdown", required: true }
+      - { label: "Icon", name: "icon", widget: "string", default: "paint" }
+      - { label: "Featured Image", name: "image", widget: "image" }
+      - { label: "Order", name: "order", widget: "number", valueType: "int", default: 0 }
